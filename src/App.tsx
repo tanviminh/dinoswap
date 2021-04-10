@@ -10,7 +10,12 @@ import {
 
 import { Header } from "screens/pool/main/header";
 import "./App.less";
-import { AppRouter, MainRouter, PoolRouter } from "./navigations";
+import "styles/index.less";
+import { AppRouter, MainRouter, PoolRouter } from "./navigations/routes";
+import { AppStack } from "navigations/AppStack";
+import { PoolStack } from "navigations/PoolStack";
+import { MainStack } from "navigations/MainStack";
+import { HomeAppScreen } from "screens/app/home/home.app.screen";
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -20,49 +25,15 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="">
-          <Layout>
-            <Content>
-              <Switch>
-                {MainRouter.map((item, index) => {
-                  return (
-                    <Route
-                      path={item.path}
-                      component={item.component}
-                      exact={item.exact}
-                    />
-                  );
-                })}
-                <PoolStack />
-              </Switch>
-            </Content>
-          </Layout>
-        </Route>
+        <MainStack />
+      </Switch>
+      <Switch>
+        <PoolStack />
+      </Switch>
+      <Switch>
+        <AppStack />
       </Switch>
     </BrowserRouter>
-  );
-}
-
-function PoolStack() {
-  let history = useHistory();
-  let path = history.location.pathname;
-  return (
-    <Route path="">
-      <div id="swap-container">
-        <Header pathname={path} />
-        <div id="swap-content">
-          {PoolRouter.map((item, index) => {
-            return (
-              <Route
-                path={item.path}
-                component={item.component}
-                exact={item.exact}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </Route>
   );
 }
 

@@ -4,7 +4,7 @@ import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import "./footer.style.less";
 
-export function Footer() {
+export function FooterComponent() {
   return (
     <ICol id="footer" span={24}>
       <div className="footer-container">

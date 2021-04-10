@@ -2,7 +2,7 @@ import { Colors, Images } from "assets";
 import { ICol, IRow, ISpace, ITitle } from "components";
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Footer } from "screens/components/footer/footer.component";
+import { FooterComponent } from "screens/components/footer/footer.component";
 
 import "./home.style.less";
 
@@ -15,7 +15,7 @@ export function HomeScreen(props: any) {
         <Header />
         <Intro />
         <Content />
-        <Footer />
+        <FooterComponent />
       </ICol>
     </div>
   );

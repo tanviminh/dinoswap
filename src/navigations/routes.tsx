@@ -1,23 +1,13 @@
 import { RouteProps } from "react-router-dom";
-import { HomeAppScreen } from "screens/app/home-app.screen";
+import { HomeAppScreen } from "screens/app/home/home.app.screen";
 import { HomeScreen } from "screens/home/home.screen";
+import { FarmScreen } from "screens/app/farm/farm.screen";
 import { LoginScreen } from "screens/auth/login.screen";
 import { NotFoundScreen } from "screens/common/404.screen";
 import { SwapScreen } from "screens/swap/swap.screen";
 import { CreatePairScreen } from "screens/pool/pair/create.pair.screen";
 import { AddLiquidityScreen } from "screens/pool/liquidity/add.liquidity.screen";
 import { MainPoolScreen } from "screens/pool/main/main.pool.screen";
-export const AppRouter: RouteProps[] = [
-  {
-    path: "/login",
-    exact: true,
-    component: LoginScreen,
-  },
-  {
-    exact: true,
-    component: NotFoundScreen,
-  },
-];
 
 export const PoolRouter: RouteProps[] = [
   {
@@ -54,10 +44,17 @@ export const MainRouter: RouteProps[] = [
     exact: true,
     component: HomeScreen,
   },
+];
 
+export const AppRouter: RouteProps[] = [
   {
-    path: "/home-app",
+    path: "/app",
     exact: true,
     component: HomeAppScreen,
+  },
+  {
+    path: "/farm",
+    exact: true,
+    component: FarmScreen,
   },
 ];
