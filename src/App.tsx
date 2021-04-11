@@ -5,6 +5,7 @@ import { PoolStack } from "navigations/PoolStack";
 import React, { Fragment, useLayoutEffect } from "react";
 import { BrowserRouter, Switch, useLocation } from "react-router-dom";
 import "styles/index.less";
+import "styles/antd.less";
 import "./App.less";
 
 const { Content, Footer, Sider } = Layout;

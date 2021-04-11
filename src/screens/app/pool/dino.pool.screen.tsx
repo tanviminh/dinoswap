@@ -18,7 +18,6 @@ export function DinoPoolScreen() {
     >
       <ICol>
         <HeaderComponent />
-        <br />
         <IRow>
           <ICol span={8}>
             <h1 style={{ color: Colors.PINK }}>Dino Pool</h1>

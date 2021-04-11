@@ -23,7 +23,7 @@ const items: ItemProps[] = [
   {
     title: "Swap / Trade",
     icon: Icons.SWAP,
-    link: "/swap",
+    link: "/app/swap",
     childs: [],
   },
 

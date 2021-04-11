@@ -6,6 +6,8 @@ import { SwapComponent, SwapScreen } from "screens/swap/swap.screen";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { HeaderComponent } from "screens/components/header/header.component";
 import { PaginationComponent } from "screens/components/page/pagination.component";
+import { LineChartComponent } from "screens/components/chart/line.chart.component";
+import { UtilsComponent } from "screens/components/utils/utils.component";
 
 export function DetailFarmScreen() {
   let history = useHistory();
@@ -49,18 +51,28 @@ function Chart(props: any) {
             height: 306,
             border: `1px solid ${Colors.SECONDARY}`,
             borderRadius: 20,
-            padding: 20,
-            background: Colors.LINE,
+            overflow: "hidden",
           }}
         >
-          <ICol>
-            <ISpace size={12}>
-              <span>Liquidity</span>
-              <span>Volume</span>
-              <span>DINO/ETH</span>
-              <span>ETH/DINO</span>
-            </ISpace>
-          </ICol>
+          <div
+            style={{
+              position: "absolute",
+              top: 20,
+              left: 24,
+              overflow: "hidden",
+            }}
+          >
+            <ICol>
+              <ISpace size={12}>
+                <span>Liquidity</span>
+                <span>Volume</span>
+                <span>DINO/ETH</span>
+                <span>ETH/DINO</span>
+              </ISpace>
+            </ICol>
+          </div>
+
+          <LineChartComponent />
         </IRow>
 
         <br />
@@ -162,7 +174,7 @@ function Chart(props: any) {
       </ICol>
       <ICol span={8}>
         <div className="box-white-outer">
-          <SwapComponent />
+          <UtilsComponent />
         </div>
       </ICol>
     </IRow>

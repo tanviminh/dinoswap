@@ -5,6 +5,7 @@ import { FarmScreen } from "screens/app/farm/farm.screen";
 import { LoginScreen } from "screens/auth/login.screen";
 import { NotFoundScreen } from "screens/common/404.screen";
 import { SwapScreen } from "screens/swap/swap.screen";
+import { SwapScreen as SwapAppScreen } from "screens/app/swap/swap.screen";
 import { CreatePairScreen } from "screens/pool/pair/create.pair.screen";
 import { AddLiquidityScreen } from "screens/pool/liquidity/add.liquidity.screen";
 import { MainPoolScreen } from "screens/pool/main/main.pool.screen";
@@ -70,6 +71,12 @@ export const AppRouter: RouteProps[] = [
     path: "/app/dino-pool",
     exact: true,
     component: DinoPoolScreen,
+  },
+
+  {
+    path: "/app/swap",
+    exact: true,
+    component: SwapAppScreen,
   },
   {
     path: "/doc",

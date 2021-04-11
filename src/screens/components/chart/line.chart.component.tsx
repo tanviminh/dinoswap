@@ -277,7 +277,7 @@ export function LineChartComponent() {
   return (
     <ResponsiveLine
       data={data}
-      //   margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 100, right: 0, bottom: 0, left: 0 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",

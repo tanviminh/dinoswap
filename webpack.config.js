@@ -72,7 +72,8 @@ module.exports = {
                 modifyVars: getThemeVariables({
                   dark: false, // Enable dark mode
                   compact: true, // Enable compact mode
-                  primaryColor: "#302856",
+                  "primary-color": "#FF7697",
+                  "link-color": "#FF7697",
                 }),
                 javascriptEnabled: true,
               },

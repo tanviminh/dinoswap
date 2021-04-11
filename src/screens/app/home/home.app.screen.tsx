@@ -6,6 +6,7 @@ import { SwapComponent, SwapScreen } from "screens/swap/swap.screen";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { BarChartComponent } from "screens/components/chart/bar.chart.component";
 import { LineChartComponent } from "screens/components/chart/line.chart.component";
+import { UtilsComponent } from "screens/components/utils/utils.component";
 
 export function HomeAppScreen(props: any) {
   return (
@@ -149,7 +150,8 @@ function Chart(props: any) {
       </ICol>
       <ICol span={8}>
         <div className="box-white-outer">
-          <SwapComponent />
+          {/* <SwapComponent /> */}
+          <UtilsComponent />
         </div>
       </ICol>
     </IRow>
