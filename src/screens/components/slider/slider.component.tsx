@@ -19,7 +19,7 @@ interface ItemProps {
 }
 
 const items: ItemProps[] = [
-  { title: "Home / Beginer", icon: Icons.HOME, link: "/", childs: [] },
+  { title: "Home / Beginer", icon: Icons.HOME, link: "/app", childs: [] },
   {
     title: "Swap / Trade",
     icon: Icons.SWAP,
@@ -65,6 +65,7 @@ const items: ItemProps[] = [
 ];
 
 export function SliderComponent() {
+  let history = useHistory();
   const [collapsed, setCollapsed] = useState(false);
   const [isOpened, setOpend] = useState(true);
 
@@ -104,6 +105,10 @@ export function SliderComponent() {
                 }}
               />
               <img
+                className="pointer"
+                onClick={() => {
+                  history.replace("/");
+                }}
                 src={Images.LOGO}
                 style={{ width: "60%", height: isOpened ? "auto" : 0 }}
               />

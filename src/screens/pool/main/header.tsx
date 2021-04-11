@@ -15,7 +15,12 @@ export function Header(props: any) {
       <IRow id="swap-header">
         <ICol>
           <IRow align="middle" style={{ height: "100%" }} gutter={[32, 0]}>
-            <ICol>
+            <ICol
+              className="pointer"
+              onClick={() => {
+                history.replace("/");
+              }}
+            >
               <img id="logo" src={Images.LOGO_WHITE} />
             </ICol>
             <ICol>

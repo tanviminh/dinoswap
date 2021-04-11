@@ -4,6 +4,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { SwapComponent, SwapScreen } from "screens/swap/swap.screen";
 import { FooterComponent } from "screens/components/footer/footer.component";
+import { BarChartComponent } from "screens/components/chart/bar.chart.component";
+import { LineChartComponent } from "screens/components/chart/line.chart.component";
 
 export function HomeAppScreen(props: any) {
   return (
@@ -11,6 +13,7 @@ export function HomeAppScreen(props: any) {
       <IRow>
         <ICol span={24}>
           <Header />
+
           <br />
           <Chart />
           <br />
@@ -96,21 +99,23 @@ function Header(props: any) {
 function Chart(props: any) {
   return (
     <IRow gutter={[24, 24]}>
-      <ICol flex="auto">
+      <ICol span={16}>
         <IRow
           style={{
             height: 236,
             border: "1px solid gray",
             borderRadius: 20,
-            padding: 20,
-            background: Colors.LINE,
+            overflow: "hidden",
           }}
         >
-          <ICol>
-            <h5>Liquidity</h5>
-            <h3>$4.6b</h3>
-            <span>March 30, 2021</span>
-          </ICol>
+          <LineChartComponent />
+          <div style={{ position: "absolute", top: 20, left: 24 }}>
+            <ICol>
+              <h5>Liquidity</h5>
+              <h3>$4.6b</h3>
+              <span>March 30, 2021</span>
+            </ICol>
+          </div>
         </IRow>
         <br />
         <IRow
@@ -118,15 +123,11 @@ function Chart(props: any) {
             height: 236,
             border: "1px solid gray",
             borderRadius: 20,
-            padding: 20,
-            background: Colors.LINE,
           }}
         >
-          <ICol>
-            <h5>Liquidity</h5>
-            <h3>$4.6b</h3>
-            <span>March 30, 2021</span>
-          </ICol>
+          <div style={{ width: "100%", height: "100%" }}>
+            <BarChartComponent />
+          </div>
         </IRow>
         <br />
         <br />
@@ -208,11 +209,13 @@ function Announcements() {
         >
           <ICol flex="auto">
             <h4>Introducing the Stablecoin List</h4>
-            <h5 style={{ color: Colors.TEXT_GRAY }}>
+            <span className="bold gray">
               Stablecoins are back with a new twist - algorithmic stablecoins.
               Browse stablecoins in our new list. Add liquidity to MIS-USDT only
               on SushiSwap.
-            </h5>
+            </span>
+            <br />
+            <br />
             <ISpace size="middle" align="center">
               <h5>MIC</h5>
               <img src={Icons.UP} style={{ width: 12 }} />

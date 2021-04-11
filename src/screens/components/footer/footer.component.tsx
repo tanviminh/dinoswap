@@ -5,11 +5,17 @@ import { useHistory, useParams } from "react-router-dom";
 import "./footer.style.less";
 
 export function FooterComponent() {
+  let history = useHistory();
   return (
     <ICol id="footer" span={24}>
       <div className="footer-container">
         <IRow align="middle">
-          <ICol>
+          <ICol
+            className="pointer"
+            onClick={() => {
+              // history.replace("/");
+            }}
+          >
             <img id="logo" src={Images.LOGO} />
           </ICol>
           <ICol flex="60px" />
