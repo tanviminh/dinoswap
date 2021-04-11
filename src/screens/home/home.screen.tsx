@@ -37,7 +37,7 @@ function Header(props: Props) {
             <div
               className="button"
               onClick={() => {
-                history.push("/pool");
+                history.push("/app");
               }}
             >
               Enter app
@@ -77,7 +77,7 @@ function Intro(props: Props) {
               <div
                 className="button"
                 onClick={() => {
-                  history.push("/pool");
+                  history.push("/app");
                 }}
               >
                 Enter app

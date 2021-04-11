@@ -7,7 +7,7 @@ import { Header } from "screens/pool/main/header";
 export function PoolStack() {
   let history = useHistory();
   let path = history.location.pathname;
-  if (!path.includes("pool") && !path.includes("swap")) {
+  if (!isRender(path)) {
     return null;
   }
   return (
@@ -30,4 +30,15 @@ export function PoolStack() {
       </div>
     </div>
   );
+}
+
+function isRender(path: string) {
+  let item = PoolRouter.find((item) => {
+    return item.path == path;
+  });
+
+  if (item) {
+    return true;
+  }
+  return false;
 }

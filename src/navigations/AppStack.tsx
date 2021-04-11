@@ -8,6 +8,9 @@ const { Content } = Layout;
 export function AppStack() {
   let history = useHistory();
   let path = history.location.pathname;
+  if (!isRender(path)) {
+    return null;
+  }
   return (
     <div>
       <Layout>
@@ -28,4 +31,15 @@ export function AppStack() {
       </Layout>
     </div>
   );
+}
+
+function isRender(path: string) {
+  let item = AppRouter.find((item) => {
+    return item.path == path;
+  });
+
+  if (item) {
+    return true;
+  }
+  return false;
 }

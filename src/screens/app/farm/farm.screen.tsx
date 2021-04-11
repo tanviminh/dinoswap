@@ -1,7 +1,8 @@
 import { Dropdown, Menu } from "antd";
 import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { HeaderComponent } from "screens/components/header/header.component";
 
@@ -21,9 +22,9 @@ export function FarmScreen() {
         <IRow>
           <ICol>
             <h1 style={{ color: Colors.PINK }}>Farms</h1>
-            <h5 style={{ color: "white" }}>
+            <span className="white">
               Stake Liquidity Pool (LP) tokens to earn.
-            </h5>
+            </span>
           </ICol>
         </IRow>
         <Content />
@@ -110,6 +111,14 @@ function Content() {
           <IRow
             align="middle"
             justify="center"
+            className="pointer"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
             style={{ padding: 16, background: Colors.SECONDARY }}
           >
             <h5 className="white">TO TOP</h5>
@@ -121,6 +130,8 @@ function Content() {
 }
 
 function Item() {
+  let history = useHistory();
+  const [showDetail, setShowDetail] = useState(false);
   return (
     <ICol style={{ width: "100%" }}>
       <IRow
@@ -169,12 +180,84 @@ function Item() {
           </ISpace>
         </ICol>
         <ICol flex="auto">
-          <ISpace size={12} className="pointer">
-            <h5 className="secondary">Detail</h5>
-            <img src={Icons.DOWN_SECONDARY} style={{ height: 24 }} />
-          </ISpace>
+          <div
+            onClick={() => {
+              setShowDetail(!showDetail);
+            }}
+          >
+            <ISpace size={12} className="pointer">
+              <h5 className="secondary">Detail</h5>
+              <img
+                src={Icons.DOWN_SECONDARY}
+                style={{
+                  height: 24,
+                  transform: showDetail ? "rotateX(180deg)" : "none",
+                }}
+              />
+            </ISpace>
+          </div>
         </ICol>
       </IRow>
+
+      {showDetail ? (
+        <IRow
+          style={{ background: Colors.PINK, padding: 20 }}
+          gutter={[20, 20]}
+          align="middle"
+        >
+          <ICol span={8}>
+            <IRow className="pointer" onClick={() => {}}>
+              <ISpace size={10} align="center">
+                <span className="bold secondary pointer">Get BNB-ETH LP</span>
+                <img src={Icons.LINK} style={{ width: 16 }} />
+              </ISpace>
+            </IRow>
+            <IRow className="pointer" onClick={() => {}}>
+              <ISpace size={10} align="center">
+                <span className="bold secondary pointer">View contract</span>
+                <img src={Icons.LINK} style={{ width: 16 }} />
+              </ISpace>
+            </IRow>
+
+            <IRow
+              className="pointer"
+              onClick={() => {
+                history.push("/farm/see-pair");
+              }}
+            >
+              <ISpace size={10} align="center">
+                <span className="bold secondary pointer">See pair info</span>
+                <img src={Icons.LINK} style={{ width: 16 }} />
+              </ISpace>
+            </IRow>
+          </ICol>
+          <ICol span={8}>
+            <div className="box-white-outer">
+              <span className="bold brown">Cake Earning</span>
+              <br />
+              <span className="bold">?</span>
+              <IRow justify="space-between" align="middle">
+                <span className="gray">-0.00000USD</span>
+                <div className="box-gray center pointer">
+                  <h5 className="gray">Harvest</h5>
+                </div>
+              </IRow>
+            </div>
+          </ICol>
+          <ICol span={8}>
+            <div className="box-white-outer">
+              <span className="bold brown">Start farming</span>
+              <br />
+              <span className="bold" style={{ opacity: 0 }}>
+                space
+              </span>
+              <div className="button center pointer">
+                <h5 className="white">Unlock wallet</h5>
+              </div>
+            </div>
+          </ICol>
+        </IRow>
+      ) : null}
     </ICol>
   );
 }

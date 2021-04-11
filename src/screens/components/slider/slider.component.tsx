@@ -19,15 +19,15 @@ interface ItemProps {
 }
 
 const items: ItemProps[] = [
-  { title: "Home / Beginer", icon: Icons.HOME, link: "/app", childs: [] },
+  { title: "Home / Beginer", icon: Icons.HOME, link: "/", childs: [] },
   {
     title: "Swap / Trade",
     icon: Icons.SWAP,
-    link: "/",
+    link: "/swap",
     childs: [],
   },
 
-  { title: "Pools", icon: Icons.POOL, link: "/", childs: [] },
+  { title: "Pools", icon: Icons.POOL, link: "/app/dino-pool", childs: [] },
   { title: "Farm", icon: Icons.FARM, link: "/farm", childs: [] },
   { title: "Team & Profile", icon: Icons.TEAM, link: "/", childs: [] },
   { title: "Governance", icon: Icons.GOVERNANCE, link: "/", childs: [] },

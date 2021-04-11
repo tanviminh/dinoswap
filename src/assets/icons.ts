@@ -6,6 +6,7 @@ import ARROW_DOWN from "./icons/arrow-down.svg";
 import QUESTION from "./icons/question.svg";
 import PLUS from "./icons/plus.svg";
 import BACK from "./icons/back.svg";
+import NEXT from "./icons/next.svg";
 import CLOSE from "./icons/close.svg";
 import COINBASE from "./icons/coinbase.svg";
 import METAMASK from "./icons/metamask.svg";
@@ -30,6 +31,10 @@ import GOVERNANCE from "./icons/governance.svg";
 import ENG from "./icons/eng.svg";
 import LIVE_FINISH from "./icons/live-finish.svg";
 import DOWN_SECONDARY from "./icons/down-secondary.svg";
+import DINO from "./icons/dino.svg";
+import SWAP_GRAY from "./icons/swap-gray.svg";
+import CORE from "./icons/core.svg";
+import LINK from "./icons/link.svg";
 
 export {
   WALLET,
@@ -40,6 +45,7 @@ export {
   QUESTION,
   PLUS,
   BACK,
+  NEXT,
   CLOSE,
   COINBASE,
   METAMASK,
@@ -63,4 +69,8 @@ export {
   ENG,
   LIVE_FINISH,
   DOWN_SECONDARY,
+  DINO,
+  SWAP_GRAY,
+  CORE,
+  LINK,
 };
