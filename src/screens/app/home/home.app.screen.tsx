@@ -300,7 +300,7 @@ function TopEarners() {
     <IRow gutter={[24, 24]}>
       <ICol span={16}>
         <IRow align="middle" justify="space-between">
-          <h1>Top Movers</h1>
+          <h1>Top Earners</h1>
           <span className="pointer" style={{ color: Colors.SECONDARY }}>
             View more
           </span>

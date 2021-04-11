@@ -10,6 +10,7 @@ import { AddLiquidityScreen } from "screens/pool/liquidity/add.liquidity.screen"
 import { MainPoolScreen } from "screens/pool/main/main.pool.screen";
 import { DetailFarmScreen } from "screens/app/farm/detail.farm.screen";
 import { DinoPoolScreen } from "screens/app/pool/dino.pool.screen";
+import { DocScreen } from "screens/app/doc/ doc.screen";
 
 export const PoolRouter: RouteProps[] = [
   {
@@ -69,5 +70,10 @@ export const AppRouter: RouteProps[] = [
     path: "/app/dino-pool",
     exact: true,
     component: DinoPoolScreen,
+  },
+  {
+    path: "/doc",
+    exact: true,
+    component: DocScreen,
   },
 ];

@@ -39,7 +39,7 @@ const items: ItemProps[] = [
       {
         title: "Docs",
         icon: Icons.ETH,
-        link: "/",
+        link: "/doc",
         childs: [{ title: "Child", link: "/aaa" }],
       },
       {
@@ -207,6 +207,9 @@ function Item(props: ChildProps) {
                   cursor: "pointer",
                 }}
                 key={index}
+                onClick={() => {
+                  history.push("/doc");
+                }}
               >
                 <span style={{ color: Colors.TEXT_GRAY }}>{item.title}</span>
               </IRow>

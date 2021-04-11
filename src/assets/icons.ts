@@ -7,6 +7,7 @@ import QUESTION from "./icons/question.svg";
 import PLUS from "./icons/plus.svg";
 import BACK from "./icons/back.svg";
 import NEXT from "./icons/next.svg";
+import NEXT_BROWN from "./icons/next-brown.svg";
 import CLOSE from "./icons/close.svg";
 import COINBASE from "./icons/coinbase.svg";
 import METAMASK from "./icons/metamask.svg";
@@ -35,6 +36,10 @@ import DINO from "./icons/dino.svg";
 import SWAP_GRAY from "./icons/swap-gray.svg";
 import CORE from "./icons/core.svg";
 import LINK from "./icons/link.svg";
+import DOT_SECONDARY from "./icons/dot-secondary.svg";
+import RATE_1 from "./icons/rate1.svg";
+import RATE_2 from "./icons/rate2.svg";
+import RATE_3 from "./icons/rate3.svg";
 
 export {
   WALLET,
@@ -73,4 +78,9 @@ export {
   SWAP_GRAY,
   CORE,
   LINK,
+  DOT_SECONDARY,
+  NEXT_BROWN,
+  RATE_1,
+  RATE_2,
+  RATE_3,
 };

@@ -16,6 +16,8 @@ export function HomeScreen(props: any) {
         <Intro />
         <Content />
         <FooterComponent />
+        <br />
+        <br />
       </ICol>
     </div>
   );

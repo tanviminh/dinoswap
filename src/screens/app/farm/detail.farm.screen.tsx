@@ -253,7 +253,7 @@ function DataTable() {
                 </ICol>
                 <ICol span={4}>
                   <IRow justify="end">
-                    <span className="pink small">10 days ago</span>
+                    <span className=" small">10 days ago</span>
                   </IRow>
                 </ICol>
               </IRow>
