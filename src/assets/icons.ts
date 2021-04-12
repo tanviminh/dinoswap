@@ -40,6 +40,8 @@ import DOT_SECONDARY from "./icons/dot-secondary.svg";
 import RATE_1 from "./icons/rate1.svg";
 import RATE_2 from "./icons/rate2.svg";
 import RATE_3 from "./icons/rate3.svg";
+import DOT_BEAR from "./icons/dot-bear.svg";
+import DOT_BULL from "./icons/dot-bull.svg";
 
 export {
   WALLET,
@@ -83,4 +85,6 @@ export {
   RATE_1,
   RATE_2,
   RATE_3,
+  DOT_BEAR,
+  DOT_BULL,
 };

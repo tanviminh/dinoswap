@@ -30,7 +30,12 @@ const items: ItemProps[] = [
   { title: "Pools", icon: Icons.POOL, link: "/app/dino-pool", childs: [] },
   { title: "Farm", icon: Icons.FARM, link: "/farm", childs: [] },
   { title: "Team & Profile", icon: Icons.TEAM, link: "/", childs: [] },
-  { title: "Governance", icon: Icons.GOVERNANCE, link: "/", childs: [] },
+  {
+    title: "Governance",
+    icon: Icons.GOVERNANCE,
+    link: "/governance",
+    childs: [],
+  },
   {
     title: "Forum",
     icon: Icons.FORUM,

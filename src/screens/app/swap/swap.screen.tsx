@@ -21,15 +21,7 @@ export function SwapScreen() {
       }}
     >
       <HeaderComponent />
-      <IRow>
-        <ICol span={8}>
-          <h1 style={{ color: Colors.PINK }}>Swap / Trade</h1>
-          {/* <span className="white">
-            Stake DINO to earn new tokens. You can unstake at any time. Rewards
-            are calculated per block.
-          </span> */}
-        </ICol>
-      </IRow>
+
       <br />
       <IRow>
         <ICol span={8}>
