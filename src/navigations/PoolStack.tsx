@@ -34,7 +34,7 @@ export function PoolStack() {
 
 function isRender(path: string) {
   let item = PoolRouter.find((item) => {
-    return item.path == path;
+    return item.path?.includes(path);
   });
 
   if (item) {

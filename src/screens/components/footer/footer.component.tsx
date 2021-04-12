@@ -9,7 +9,7 @@ export function FooterComponent() {
   return (
     <ICol id="footer" span={24}>
       <div className="footer-container">
-        <IRow align="middle">
+        <IRow gutter={[20, 20]} align="middle" justify="space-between">
           <ICol
             className="pointer"
             onClick={() => {
@@ -26,14 +26,13 @@ export function FooterComponent() {
               currently on the Ethereum blockchain
             </span>
           </ICol>
-          <ICol flex="auto"></ICol>
           <ICol>
             <h4>Contact us</h4>
-            <ISpace size={8}>
+            <IRow justify="space-between" style={{ marginTop: 4 }}>
               <img className="social" src={Images.FACEBOOK} />
               <img className="social" src={Images.TWITTER} />
               <img className="social" src={Images.TELEGRAM} />
-            </ISpace>
+            </IRow>
           </ICol>
         </IRow>
       </div>

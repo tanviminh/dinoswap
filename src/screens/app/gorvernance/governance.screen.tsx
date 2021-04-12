@@ -20,6 +20,7 @@ export function GovernanceScreen() {
       }}
     >
       <HeaderComponent />
+      <br />
       <IRow>
         <ICol>
           <h1 style={{}}>Governance</h1>
@@ -77,7 +78,7 @@ function Timelook() {
                 borderTop: `1px solid ${Colors.LINE}`,
               }}
             >
-              <ICol style={{ width: "100%" }}>
+              <ICol span={24} style={{ width: "100%" }}>
                 <IRow justify="space-between" align="top">
                   <h4>MasterChef</h4>
                   <div className={index == 1 ? "tag-pending" : "tag-excute"}>
@@ -87,22 +88,22 @@ function Timelook() {
                 <span className="small gray">Unlocks in 3 hours</span>
                 <br />
                 <br />
-                <IRow>
-                  <ICol span={8}>
+                <IRow gutter={[20, 20]}>
+                  <ICol md={24} lg={8}>
                     <span className="small gray">Created</span>
                     <br />
                     <span className="bold">
                       Thu Apr 08 2021 14:55:32 GMT+0700 (Indochina Time)
                     </span>
                   </ICol>
-                  <ICol span={8}>
+                  <ICol md={24} lg={8}>
                     <span className="small gray">End</span>
                     <br />
                     <span className="bold">
                       Thu Apr 08 2021 14:55:32 GMT+0700 (Indochina Time)
                     </span>
                   </ICol>
-                  <ICol span={8}>
+                  <ICol md={24} lg={8}>
                     <span className="small gray">Function</span>
                     <br />
                     <span className="bold">set(uint256,uint256,bool)</span>

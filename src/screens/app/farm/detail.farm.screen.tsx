@@ -8,7 +8,12 @@ import { HeaderComponent } from "screens/components/header/header.component";
 import { PaginationComponent } from "screens/components/page/pagination.component";
 import { LineChartComponent } from "screens/components/chart/line.chart.component";
 import { UtilsComponent } from "screens/components/utils/utils.component";
+import { isMobileOnly } from "react-device-detect";
 
+/**
+ * Farm - See pair
+ * @returns
+ */
 export function DetailFarmScreen() {
   let history = useHistory();
   return (
@@ -29,6 +34,7 @@ export function DetailFarmScreen() {
               <h5>DINO-ETH</h5>
             </ISpace>
           </div>
+          <br />
           <HeaderComponent />
           <br />
           <Chart />
@@ -42,13 +48,13 @@ export function DetailFarmScreen() {
   );
 }
 
-function Chart(props: any) {
+function Chart() {
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol flex="auto">
+    <IRow gutter={[20, 20]}>
+      <ICol xs={24} md={24} lg={16}>
         <IRow
           style={{
-            height: 306,
+            height: 360,
             border: `1px solid ${Colors.SECONDARY}`,
             borderRadius: 20,
             overflow: "hidden",
@@ -74,15 +80,14 @@ function Chart(props: any) {
 
           <LineChartComponent />
         </IRow>
-
         <br />
         <br />
         <IRow>
           <ICol span={24}>
             <h1>Pair Details</h1>
             <br />
-            <IRow>
-              <ICol span={8}>
+            <IRow gutter={[20, 20]}>
+              <ICol xs={24} md={8}>
                 <span>Total Liquidity</span>
                 <br />
                 <ISpace size={8} align="center">
@@ -91,7 +96,7 @@ function Chart(props: any) {
                   <span className="bear">-0.71%</span>
                 </ISpace>
               </ICol>
-              <ICol span={8}>
+              <ICol xs={24} md={8}>
                 <span>Volume (24hrs)</span>
                 <br />
                 <ISpace size={8} align="center">
@@ -100,7 +105,7 @@ function Chart(props: any) {
                 </ISpace>
               </ICol>
 
-              <ICol span={8}>
+              <ICol xs={24} md={8}>
                 <span>Fee (24hrs)</span>
                 <br />
                 <ISpace size={8} align="center">
@@ -126,43 +131,17 @@ function Chart(props: any) {
                       borderTop: `1px solid ${Colors.LINE}`,
                     }}
                     align="middle"
+                    wrap={false}
                   >
                     <img src={Icons.BNB} style={{ width: 24 }} />
                     <ICol flex="auto" style={{ marginLeft: 12 }}>
                       <span>1 DINO = 0.423443 ETH ($456.78)</span>
                     </ICol>
                     <ISpace size={8}>
-                      <span className="secondary bold">View more</span>
-                      <img src={Icons.NEXT} style={{ width: 24 }} />
-                    </ISpace>
-                  </IRow>
-                );
-              })}
-            </ICol>
-          </ICol>
-        </IRow>
-        <br />
-        <br />
-        <IRow>
-          <ICol span={24}>
-            <h5>Underlying Liquidity</h5>
-            <br />
-            <ICol className="box-gray-border">
-              {[{}, {}, {}].map((item, index) => {
-                return (
-                  <IRow
-                    style={{
-                      padding: 12,
-                      borderTop: `1px solid ${Colors.LINE}`,
-                    }}
-                    align="middle"
-                  >
-                    <img src={Icons.BNB} style={{ width: 24 }} />
-                    <ICol flex="auto" style={{ marginLeft: 12 }}>
-                      <span>1 DINO = 0.423443 ETH ($456.78)</span>
-                    </ICol>
-                    <ISpace size={8}>
-                      <span className="secondary bold">View more</span>
+                      {!isMobileOnly ? (
+                        <span className="secondary bold">View more</span>
+                      ) : null}
+
                       <img src={Icons.NEXT} style={{ width: 24 }} />
                     </ISpace>
                   </IRow>
@@ -172,7 +151,7 @@ function Chart(props: any) {
           </ICol>
         </IRow>
       </ICol>
-      <ICol span={8}>
+      <ICol xs={24} md={24} lg={8}>
         <div className="box-white-outer">
           <UtilsComponent />
         </div>
@@ -184,7 +163,7 @@ function Chart(props: any) {
 function DataTable() {
   return (
     <IRow gutter={[24, 24]}>
-      <ICol flex="auto">
+      <ICol md={24} lg={16} style={{ minWidth: isMobileOnly ? 1080 : "auto" }}>
         <ISpace size={20} align="center">
           <ICol>
             <span className="bold">All</span>
@@ -276,8 +255,6 @@ function DataTable() {
         <br />
         <PaginationComponent />
       </ICol>
-
-      <ICol span={8}></ICol>
     </IRow>
   );
 }

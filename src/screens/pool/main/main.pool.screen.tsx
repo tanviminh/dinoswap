@@ -11,7 +11,15 @@ import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 export function MainPoolScreen(props: any) {
   return (
     <div>
-      <Content />
+      <IRow
+        style={{ width: "100%", minHeight: "80vh" }}
+        justify="center"
+        align="middle"
+      >
+        <ICol span={24}>
+          <Content />
+        </ICol>
+      </IRow>
     </div>
   );
 }
@@ -20,11 +28,12 @@ function Content(props: any) {
   let history = useHistory();
   return (
     <div>
-      <br />
-      <br />
-      <IRow style={{ width: "100%" }}>
-        <ICol span={8}></ICol>
-        <ICol span={8}>
+      <IRow
+        style={{ width: "100%", padding: 20 }}
+        align="middle"
+        justify="center"
+      >
+        <ICol lg={12} md={18} xs={24}>
           <h1
             style={{
               color: Colors.PINK,
@@ -77,8 +86,6 @@ function Content(props: any) {
             Connect to a wallet to view your liquidity
           </span>
         </ICol>
-
-        <ICol span={8}></ICol>
       </IRow>
     </div>
   );

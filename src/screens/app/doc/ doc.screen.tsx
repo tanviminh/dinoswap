@@ -16,7 +16,7 @@ export function DocScreen() {
         minHeight: "100vh",
       }}
     >
-      <ICol>
+      <ICol style={{ width: "100%" }}>
         <HeaderComponent />
         <br />
 
@@ -30,7 +30,7 @@ export function DocScreen() {
 function Content() {
   return (
     <IRow>
-      <ICol span={16}>
+      <ICol md={24} lg={16}>
         <h1>👋 Welcome to DinoSwap</h1>
         <br />
         <span className="gray">
@@ -135,8 +135,8 @@ function Content() {
         </span>
         <br />
         <br />
-        <IRow gutter={[24, 24]}>
-          <ICol flex="auto">
+        <IRow gutter={[8, 8]}>
+          <ICol xs={24} md={12}>
             <div className="box-white-outer pointer">
               <IRow justify="space-between" align="middle">
                 <img src={Icons.BACK} style={{ width: 24 }} />
@@ -158,7 +158,7 @@ function Content() {
               </IRow>
             </div>
           </ICol>
-          <ICol flex="auto">
+          <ICol xs={24} md={12}>
             <div className="box-white-outer pointer">
               <IRow justify="space-between" align="middle">
                 <div
@@ -182,20 +182,20 @@ function Content() {
           </ICol>
         </IRow>
         <br />
-        <IRow justify="space-between">
-          <ICol>
-            <ISpace size={12}>
+        <IRow justify="space-between" gutter={[20, 20]}>
+          <ICol xs={24} md={12}>
+            <ISpace size={12} wrap={false}>
               <span className="gray">By</span>
-              <span>
+              <span className="no-wrap">
                 <img src={Images.AVATAR} style={{ width: 16 }} />
                 <img src={Images.AVATAR} style={{ width: 16 }} />
               </span>
               <span className="gray">Last updated 1 month ago</span>
             </ISpace>
           </ICol>
-          <ICol>
+          <ICol xs={24} md={12}>
             <span className="bold secondary">WAS THIS PAGE HELPFUL?</span>
-            <IRow justify="center">
+            <IRow>
               <img
                 className="pointer"
                 src={Icons.RATE_1}

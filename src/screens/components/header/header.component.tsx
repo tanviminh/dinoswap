@@ -2,6 +2,7 @@ import Modal from "antd/lib/modal/Modal";
 import { Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import React, { useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
 import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 export function HeaderComponent(props: any) {
@@ -36,7 +37,7 @@ export function HeaderComponent(props: any) {
         onCancel={() => {
           setShowWallet(false);
         }}
-        width={"25%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
         <ConnectWalletScreen
           close={() => {

@@ -9,6 +9,7 @@ const { SubMenu } = Menu;
 
 interface ChildProps {
   collapsed: boolean;
+  setCollapsed?: any;
   item: ItemProps;
 }
 interface ItemProps {
@@ -71,7 +72,7 @@ const items: ItemProps[] = [
 
 export function SliderComponent() {
   let history = useHistory();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [isOpened, setOpend] = useState(true);
 
   function onCollapse(collapsed: boolean) {
@@ -122,7 +123,13 @@ export function SliderComponent() {
 
           <div style={{ width: "100%", height: 1, background: Colors.LINE }} />
           {items.map((item: ItemProps, index) => {
-            return <Item collapsed={collapsed} item={item} />;
+            return (
+              <Item
+                collapsed={collapsed}
+                setCollapsed={setCollapsed}
+                item={item}
+              />
+            );
           })}
           <br />
           <br />
@@ -164,6 +171,8 @@ function Item(props: ChildProps) {
         style={{ height: 60, cursor: "pointer", overflow: "hidden" }}
         align="middle"
         onClick={() => {
+          props.setCollapsed(true);
+
           if (childs?.length) {
             setOpen(!open);
             return;
@@ -218,7 +227,8 @@ function Item(props: ChildProps) {
                 }}
                 key={index}
                 onClick={() => {
-                  history.push("/doc");
+                  history.push(item.link);
+                  props.setCollapsed(true);
                 }}
               >
                 <span style={{ color: Colors.TEXT_GRAY }}>{item.title}</span>

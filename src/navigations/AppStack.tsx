@@ -15,7 +15,7 @@ export function AppStack() {
     <div>
       <Layout>
         <SliderComponent />
-        <Layout>
+        <Layout style={{ minWidth: 300 }}>
           <Switch>
             {AppRouter.map((item: any, index: any) => {
               return (
@@ -35,7 +35,7 @@ export function AppStack() {
 
 function isRender(path: string) {
   let item = AppRouter.find((item) => {
-    return item.path == path;
+    return item.path?.includes(path);
   });
 
   if (item) {

@@ -24,7 +24,7 @@ export function SwapScreen() {
 
       <br />
       <IRow>
-        <ICol span={8}>
+        <ICol xs={24} md={12} lg={10} xl={8} xxl={6}>
           <div className="box-white-outer">
             <UtilsComponent />
           </div>

@@ -11,7 +11,7 @@ export function FarmScreen() {
     <div
       style={{
         width: "100%",
-        padding: 24,
+        padding: 20,
         background: Colors.PURPLE,
         minHeight: "100vh",
       }}
@@ -51,19 +51,20 @@ function Content() {
   );
   return (
     <ICol>
-      <IRow gutter={[24, 24]} align="bottom">
-        <ICol span={9}>
-          <ISpace size={24}>
-            <img src={Icons.LIVE_FINISH} style={{ height: 24 }} />
+      <br />
+      <IRow gutter={[20, 20]} align="bottom">
+        <ICol lg={9} md={6} xs={24}>
+          <ISpace size={20}>
+            <img src={Icons.LIVE_FINISH} style={{ height: 36 }} />
           </ISpace>
         </ICol>
-        <ICol span={5}>
-          <ISpace size={24}>
-            <img src={Icons.TOOGLE_ON} style={{ height: 24 }} />
+        <ICol lg={5} md={6}>
+          <ISpace size={20}>
+            <img src={Icons.TOOGLE_ON} style={{ height: 36 }} />
             <span className="pink">Stack only</span>
           </ISpace>
         </ICol>
-        <ICol span={5}>
+        <ICol lg={5} md={6} xs={24}>
           <span className="pink">Sort by</span>
           <br />
           <br />
@@ -74,23 +75,23 @@ function Content() {
                   <span className="bold ">APR</span>
                 </ICol>
                 <ICol>
-                  <img src={Icons.DOWN_SECONDARY} style={{ width: 24 }} />
+                  <img src={Icons.DOWN_SECONDARY} style={{ width: 20 }} />
                 </ICol>
               </IRow>
             </Dropdown>
           </div>
         </ICol>
-        <ICol span={5}>
+        <ICol lg={5} md={6} xs={24}>
           <span className="pink">Search</span>
           <br />
           <br />
           <div className="no-wrap box-search">
-            <IRow gutter={[20, 0]}>
+            <IRow gutter={[20, 0]} wrap={false}>
               <ICol flex="auto">
                 <input className="input-search" placeholder="Search farms..." />
               </ICol>
               <ICol>
-                <img src={Icons.SEARCH} style={{ width: 24 }} />
+                <img src={Icons.SEARCH} style={{ width: 20 }} />
               </ICol>
             </IRow>
           </div>
@@ -137,25 +138,26 @@ function Item() {
       <IRow
         style={{ padding: 20, borderBottom: `1px solid ${Colors.LINE}` }}
         align="middle"
+        gutter={[20, 20]}
       >
-        <ICol span={5}>
+        <ICol xs={12} md={8} lg={5}>
           <ISpace size={12}>
             <IRow>
-              <img src={Icons.BNB} style={{ height: 24, zIndex: 1 }} />
+              <img src={Icons.BNB} style={{ height: 20, zIndex: 1 }} />
               <img
                 src={Icons.ETH}
-                style={{ height: 24, marginLeft: -4, zIndex: 0 }}
+                style={{ height: 20, marginLeft: -4, zIndex: 0 }}
               />
             </IRow>
             <h5>BNB-ETH</h5>
           </ISpace>
         </ICol>
-        <ICol span={3}>
+        <ICol xs={12} md={8} lg={3}>
           <span className="gray">Earned</span>
           <br />
           <h5>?</h5>
         </ICol>
-        <ICol span={4}>
+        <ICol xs={12} md={8} lg={4}>
           <span className="gray">ARP</span>
           <br />
           <ISpace size={12}>
@@ -163,7 +165,7 @@ function Item() {
             <img src={Icons.QUESTION} style={{ height: 16 }} />
           </ISpace>
         </ICol>
-        <ICol span={5}>
+        <ICol xs={12} md={8} lg={5}>
           <span className="gray">Liquidity</span>
           <br />
           <ISpace size={12}>
@@ -171,7 +173,7 @@ function Item() {
             <img src={Icons.QUESTION} style={{ height: 16 }} />
           </ISpace>
         </ICol>
-        <ICol span={4}>
+        <ICol xs={12} md={8} lg={4}>
           <span className="gray">Multiplier</span>
           <br />
           <ISpace size={12}>
@@ -179,7 +181,7 @@ function Item() {
             <img src={Icons.QUESTION} style={{ height: 16 }} />
           </ISpace>
         </ICol>
-        <ICol flex="auto">
+        <ICol xs={12} md={8} lg={3}>
           <div
             onClick={() => {
               setShowDetail(!showDetail);
@@ -190,7 +192,7 @@ function Item() {
               <img
                 src={Icons.DOWN_SECONDARY}
                 style={{
-                  height: 24,
+                  height: 20,
                   transform: showDetail ? "rotateX(180deg)" : "none",
                 }}
               />
@@ -205,7 +207,7 @@ function Item() {
           gutter={[20, 20]}
           align="middle"
         >
-          <ICol span={8}>
+          <ICol xs={24} md={8}>
             <IRow className="pointer" onClick={() => {}}>
               <ISpace size={10} align="center">
                 <span className="bold secondary pointer">Get BNB-ETH LP</span>
@@ -231,23 +233,26 @@ function Item() {
               </ISpace>
             </IRow>
           </ICol>
-          <ICol span={8}>
+          <ICol xs={24} md={8}>
             <div className="box-white-outer">
               <span className="bold brown">Cake Earning</span>
               <br />
               <span className="bold">?</span>
               <IRow justify="space-between" align="middle">
-                <span className="gray">-0.00000USD</span>
+                <span className="gray">-0.000USD</span>
                 <div className="box-gray center pointer">
                   <h5 className="gray">Harvest</h5>
                 </div>
               </IRow>
             </div>
           </ICol>
-          <ICol span={8}>
-            <div className="box-white-outer">
+          <ICol xs={24} md={8}>
+            <div className="box-white-outer" style={{ height: "100%" }}>
               <span className="bold brown">Start farming</span>
               <br />
+              <span className="bold" style={{ opacity: 0 }}>
+                space
+              </span>
               <span className="bold" style={{ opacity: 0 }}>
                 space
               </span>

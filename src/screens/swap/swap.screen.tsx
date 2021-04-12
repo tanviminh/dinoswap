@@ -4,24 +4,29 @@ import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import { values } from "lodash";
 import React, { useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 import { SettingSwapScreen } from "./setting.swap.screen";
 
 export function SwapScreen(props: any) {
   return (
     <div>
-      <div>
-        <br />
-        <br />
-        <IRow style={{ width: "100%" }}>
-          <ICol span={9}></ICol>
-          <ICol span={6} id="swap-popup">
-            <SwapComponent />
-          </ICol>
-
-          <ICol span={9}></ICol>
-        </IRow>
-      </div>
+      <IRow
+        style={{ width: "100%", minHeight: "80vh" }}
+        justify="center"
+        align="middle"
+      >
+        <ICol
+          xs={24}
+          md={12}
+          lg={10}
+          xl={8}
+          xxl={6}
+          className="box-white-outer"
+        >
+          <SwapComponent />
+        </ICol>
+      </IRow>
     </div>
   );
 }
@@ -176,7 +181,7 @@ export function SwapComponent() {
         onCancel={() => {
           setShowWallet(false);
         }}
-        width={"20%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
         <ConnectWalletScreen
           close={() => {

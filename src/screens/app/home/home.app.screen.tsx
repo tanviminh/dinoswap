@@ -7,38 +7,37 @@ import { FooterComponent } from "screens/components/footer/footer.component";
 import { BarChartComponent } from "screens/components/chart/bar.chart.component";
 import { LineChartComponent } from "screens/components/chart/line.chart.component";
 import { UtilsComponent } from "screens/components/utils/utils.component";
-
+import { isMobileOnly } from "react-device-detect";
+const GUTTER = 20;
 export function HomeAppScreen(props: any) {
   return (
-    <div style={{ width: "100%", padding: 24 }}>
-      <IRow>
-        <ICol span={24}>
-          <Header />
+    <div style={{ padding: 24 }}>
+      <ICol span={24}>
+        <Header />
 
-          <br />
-          <Chart />
-          <br />
-          <br />
-          <PopularList />
-          <br />
-          <br />
-          <br />
-          <Announcements />
+        <br />
+        <Chart />
+        <br />
+        <br />
+        <PopularList />
+        <br />
+        <br />
+        <br />
+        <Announcements />
 
-          <br />
-          <br />
-          <br />
-          <TopMovers />
+        <br />
+        <br />
+        <br />
+        <TopMovers />
 
-          <br />
-          <br />
-          <br />
-          <TopEarners />
-          <br />
-          <br />
-          <Footer />
-        </ICol>
-      </IRow>
+        <br />
+        <br />
+        <br />
+        <TopEarners />
+
+        <br />
+        <Footer />
+      </ICol>
     </div>
   );
 }
@@ -46,38 +45,45 @@ export function HomeAppScreen(props: any) {
 function Header(props: any) {
   let history = useHistory();
   return (
-    <IRow gutter={[24, 0]} align="middle" wrap={false}>
-      <ICol flex="auto">
-        <div
-          className="box-gray-inner"
-          style={{ width: "100%", overflow: "scroll" }}
-        >
-          <ISpace className="no-wrap" size={24}>
-            <span className="no-wrap">
-              Transactions (24hr):{" "}
-              <span className="no-wrap" style={{ color: Colors.BEAR }}>
-                -14%
+    <IRow
+      gutter={[GUTTER, 0]}
+      align="middle"
+      justify={isMobileOnly ? "end" : "space-between"}
+      wrap={false}
+    >
+      {!isMobileOnly ? (
+        <ICol flex="auto">
+          <div
+            className="box-gray-inner"
+            style={{ width: "100%", overflow: "scroll" }}
+          >
+            <ISpace className="no-wrap" size={24}>
+              <span className="no-wrap">
+                Transactions (24hr):{" "}
+                <span className="no-wrap" style={{ color: Colors.BEAR }}>
+                  -14%
+                </span>
               </span>
-            </span>
 
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">
-              Transactions (24hr):{" "}
-              <span className="no-wrap" style={{ color: Colors.BULL }}>
-                -14%
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">
+                Transactions (24hr):{" "}
+                <span className="no-wrap" style={{ color: Colors.BULL }}>
+                  -14%
+                </span>
               </span>
-            </span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-            <span className="no-wrap">Transactions (24hr): 14,256</span>
-          </ISpace>
-        </div>
-      </ICol>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+              <span className="no-wrap">Transactions (24hr): 14,256</span>
+            </ISpace>
+          </div>
+        </ICol>
+      ) : null}
 
       <ICol>
         <ISpace size={24}>
@@ -99,8 +105,8 @@ function Header(props: any) {
 
 function Chart(props: any) {
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol span={16}>
+    <IRow gutter={[GUTTER, GUTTER]}>
+      <ICol xl={16} lg={12} xs={24}>
         <IRow
           style={{
             height: 236,
@@ -134,7 +140,7 @@ function Chart(props: any) {
         <br />
         <IRow wrap={false}>
           <ICol flex="auto" className="no-wrap box-search">
-            <IRow gutter={[20, 0]}>
+            <IRow gutter={[GUTTER, 0]}>
               <ICol flex="auto">
                 <input
                   className="input-search"
@@ -148,9 +154,8 @@ function Chart(props: any) {
           </ICol>
         </IRow>
       </ICol>
-      <ICol span={8}>
+      <ICol xl={8} lg={12} xs={24}>
         <div className="box-white-outer">
-          {/* <SwapComponent /> */}
           <UtilsComponent />
         </div>
       </ICol>
@@ -161,23 +166,27 @@ function Chart(props: any) {
 function PopularList() {
   function Item() {
     return (
-      <div
-        style={{
-          boxShadow: "3px 3px 12px rgba(0, 0, 0, 0.12)",
-          borderRadius: 14,
-          padding: "2px 10px 2px 2px",
-        }}
-      >
-        <ISpace size="small">
-          <img src={Icons.COINBASE} style={{ width: 20 }} />
-          <span>StableCoin</span>
-        </ISpace>
-      </div>
+      <ICol>
+        <IRow>
+          <div
+            style={{
+              boxShadow: "3px 3px 12px rgba(0, 0, 0, 0.12)",
+              borderRadius: 14,
+              padding: "2px 10px 2px 2px",
+            }}
+          >
+            <ISpace size="small">
+              <img src={Icons.COINBASE} style={{ width: 20 }} />
+              <span>StableCoin</span>
+            </ISpace>
+          </div>
+        </IRow>
+      </ICol>
     );
   }
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol flex="auto">
+    <IRow gutter={[GUTTER, GUTTER]}>
+      <ICol md={16} xs={24}>
         <IRow align="middle" justify="space-between">
           <h1>Popular list</h1>
           <span className="pointer" style={{ color: Colors.SECONDARY }}>
@@ -185,13 +194,12 @@ function PopularList() {
           </span>
         </IRow>
         <br />
-        <ISpace>
+        <ISpace size={12} wrap>
           {[{}, {}, {}].map((item, index) => {
-            return <Item />;
+            return <Item key={index} />;
           })}
         </ISpace>
       </ICol>
-      <ICol span={8} />
     </IRow>
   );
 }
@@ -199,24 +207,21 @@ function PopularList() {
 function Announcements() {
   function Item() {
     return (
-      <ICol style={{}}>
+      <ICol>
         <IRow
-          gutter={[24, 24]}
           align="middle"
-          wrap={false}
           style={{
             borderTop: `1px solid ${Colors.LINE}`,
             padding: "10px 0px",
           }}
         >
-          <ICol flex="auto">
-            <h4>Introducing the Stablecoin List</h4>
-            <span className="bold gray">
+          <ICol xs={24} md={16} lg={18}>
+            <h5>Introducing the Stablecoin List</h5>
+            <span className=" gray">
               Stablecoins are back with a new twist - algorithmic stablecoins.
               Browse stablecoins in our new list. Add liquidity to MIS-USDT only
               on SushiSwap.
             </span>
-            <br />
             <br />
             <ISpace size="middle" align="center">
               <h5>MIC</h5>
@@ -224,16 +229,17 @@ function Announcements() {
               <h5 style={{ color: Colors.BULL }}>0.71%</h5>
             </ISpace>
           </ICol>
-          <ICol flex="128px">
-            <img src={Icons.FORTMATIC} style={{ width: 128 }} />
+          <ICol xs={24} md={8} lg={4}>
+            <br />
+            <img src={Images.BACKGROUND_1} style={{ width: "100%" }} />
           </ICol>
         </IRow>
       </ICol>
     );
   }
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol span={16}>
+    <IRow gutter={[GUTTER, GUTTER]}>
+      <ICol lg={16} xs={24}>
         <IRow align="middle" justify="space-between">
           <h1>Announcements</h1>
           <span className="pointer" style={{ color: Colors.SECONDARY }}>
@@ -241,13 +247,12 @@ function Announcements() {
           </span>
         </IRow>
         <br />
-        <IRow gutter={[24, 0]}>
+        <IRow gutter={[GUTTER, 0]}>
           {[{}, {}, {}, {}, {}].map((item, index) => {
-            return <Item />;
+            return <Item key={index} />;
           })}
         </IRow>
       </ICol>
-      <ICol span={8} />
     </IRow>
   );
 }
@@ -255,7 +260,7 @@ function Announcements() {
 function TopMovers() {
   function Item() {
     return (
-      <ICol span={6}>
+      <ICol xs={24} md={8} lg={6}>
         <div className="box-white-outer">
           <h4>ZLOT</h4>
           <span style={{ color: Colors.TEXT_GRAY }}>zLOT</span>
@@ -268,8 +273,8 @@ function TopMovers() {
     );
   }
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol span={16}>
+    <IRow gutter={[GUTTER, GUTTER]}>
+      <ICol lg={16} xs={24}>
         <IRow align="middle" justify="space-between">
           <h1>Top Movers</h1>
           <span className="pointer" style={{ color: Colors.SECONDARY }}>
@@ -277,13 +282,13 @@ function TopMovers() {
           </span>
         </IRow>
         <br />
-        <IRow className="" gutter={[20, 20]}>
+        <br />
+        <IRow className="" gutter={[GUTTER, GUTTER]}>
           {[{}, {}, {}, {}, {}, {}, {}].map((item, index) => {
-            return <Item />;
+            return <Item key={index} />;
           })}
         </IRow>
       </ICol>
-      <ICol span={8} />
     </IRow>
   );
 }
@@ -291,7 +296,7 @@ function TopMovers() {
 function TopEarners() {
   function Item() {
     return (
-      <ICol span={6}>
+      <ICol xs={24} md={8} lg={6}>
         <div className="box-white-outer">
           <h4>ETH-AXS</h4>
           <br />
@@ -302,8 +307,8 @@ function TopEarners() {
     );
   }
   return (
-    <IRow gutter={[24, 24]}>
-      <ICol span={16}>
+    <IRow gutter={[GUTTER, GUTTER]}>
+      <ICol lg={16} xs={24}>
         <IRow align="middle" justify="space-between">
           <h1>Top Earners</h1>
           <span className="pointer" style={{ color: Colors.SECONDARY }}>
@@ -311,13 +316,13 @@ function TopEarners() {
           </span>
         </IRow>
         <br />
-        <IRow className="" gutter={[20, 20]}>
+        <br />
+        <IRow className="" gutter={[GUTTER, GUTTER]}>
           {[{}, {}, {}, {}, {}, {}, {}].map((item, index) => {
             return <Item />;
           })}
         </IRow>
       </ICol>
-      <ICol span={8} />
     </IRow>
   );
 }

@@ -113,7 +113,8 @@ export function BarChartComponent() {
     <ResponsiveBar
       data={data}
       keys={["CoinBase", "burger", "sandwich", "kebab", "fries", "donut"]}
-      margin={{ top: 20, right: 130, bottom: 28, left: 60 }}
+      // margin={{ top: 20, right: 130, bottom: 28, left: 60 }}
+      margin={{ top: 50, right: 0, bottom: 0, left: 0 }}
       indexBy="country"
       padding={0.3}
       groupMode="grouped"

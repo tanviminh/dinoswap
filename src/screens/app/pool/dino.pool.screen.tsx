@@ -11,15 +11,17 @@ export function DinoPoolScreen() {
     <div
       style={{
         width: "100%",
-        padding: 24,
+        padding: 20,
         background: Colors.PURPLE,
         minHeight: "100vh",
       }}
     >
       <ICol>
         <HeaderComponent />
+        <br />
+
         <IRow>
-          <ICol span={8}>
+          <ICol xs={20} md={16} lg={8}>
             <h1 style={{ color: Colors.PINK }}>Dino Pool</h1>
             <span className="white">
               Stake DINO to earn new tokens. You can unstake at any time.
@@ -40,12 +42,12 @@ export function DinoPoolScreen() {
 function Content() {
   return (
     <ICol>
-      <IRow gutter={[24, 24]}>
+      <IRow gutter={[20, 20]}>
         <ICol>
-          <ISpace size={24}>
-            <img src={Icons.LIVE_FINISH} style={{ height: 24 }} />
+          <ISpace size={20}>
+            <img src={Icons.LIVE_FINISH} style={{ height: 20 }} />
             <ISpace size={12}>
-              <img src={Icons.TOOGLE_ON} style={{ height: 24 }} />
+              <img src={Icons.TOOGLE_ON} style={{ height: 20 }} />
               <span className="pink">Stack only</span>
             </ISpace>
           </ISpace>
@@ -54,10 +56,10 @@ function Content() {
       <br />
       <br />
 
-      <IRow gutter={[24, 24]}>
+      <IRow gutter={[20, 20]}>
         {[{}, {}, {}, {}, {}, {}, {}].map((item, index) => {
           return (
-            <ICol span={8} key={index}>
+            <ICol xs={24} md={12} lg={8} key={index}>
               <Item />
             </ICol>
           );
@@ -128,7 +130,7 @@ function Item() {
       <br />
 
       <IRow justify="space-between" align="middle">
-        <img src={Icons.CORE} style={{ height: 24 }} />
+        <img src={Icons.CORE} style={{ height: 20 }} />
 
         <ICol>
           <div
@@ -141,7 +143,7 @@ function Item() {
               <img
                 src={Icons.DOWN_SECONDARY}
                 style={{
-                  height: 24,
+                  height: 20,
                   transform: showDetail ? "rotateX(180deg)" : "none",
                 }}
               />

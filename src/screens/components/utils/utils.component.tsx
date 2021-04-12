@@ -5,6 +5,7 @@ import { Icons } from "assets";
 import Modal from "antd/lib/modal/Modal";
 import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 import { SettingUtilsComponent } from "./setting.utils.component";
+import { isMobileOnly } from "react-device-detect";
 const { TabPane } = Tabs;
 interface Props {
   setShowWallet: any;
@@ -48,7 +49,7 @@ export function UtilsComponent() {
         onCancel={() => {
           setShowWallet(false);
         }}
-        width={"20%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
         <ConnectWalletScreen
           close={() => {
@@ -65,7 +66,7 @@ export function UtilsComponent() {
         onCancel={() => {
           setShowSetting(false);
         }}
-        width={"25%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
         <SettingUtilsComponent
           close={() => {

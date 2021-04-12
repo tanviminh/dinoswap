@@ -4,6 +4,7 @@ import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import { values } from "lodash";
 import React, { useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
 import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 
@@ -11,7 +12,22 @@ import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
 export function CreatePairScreen(props: any) {
   return (
     <div>
-      <Content />
+      <IRow
+        style={{ width: "100%", minHeight: "80vh" }}
+        justify="center"
+        align="middle"
+      >
+        <ICol
+          xs={24}
+          md={12}
+          lg={10}
+          xl={8}
+          xxl={6}
+          className="box-white-outer"
+        >
+          <Content />
+        </ICol>
+      </IRow>
     </div>
   );
 }
@@ -23,11 +39,8 @@ function Content() {
 
   return (
     <div>
-      <br />
-      <br />
       <IRow style={{ width: "100%" }}>
-        <ICol span={9}></ICol>
-        <ICol span={6} id="swap-popup">
+        <ICol span={24}>
           <IRow>
             <ICol
               onClick={() => {
@@ -37,9 +50,7 @@ function Content() {
               <img src={Icons.BACK} id="swap-set" />
             </ICol>
             <ICol flex="auto"></ICol>
-            <ICol>
-              <img src={Icons.SET} id="swap-set" />
-            </ICol>
+            <ICol>{/* <img src={Icons.SET} id="swap-set" /> */}</ICol>
           </IRow>
           <IRow>
             <ICol>
@@ -139,7 +150,6 @@ function Content() {
             </ICol>
           </IRow>
         </ICol>
-        <ICol span={9}></ICol>
       </IRow>
       <Modal
         visible={showWallet}
@@ -149,7 +159,7 @@ function Content() {
         onCancel={() => {
           setShowWallet(false);
         }}
-        width={"25%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
         <ConnectWalletScreen
           close={() => {
