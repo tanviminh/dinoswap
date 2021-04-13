@@ -13,8 +13,8 @@ export function HomeScreen(props: any) {
     <div style={{ width: "100%", padding: 20 }}>
       <ICol>
         <Header />
+        <br />
         <IRow>
-          <br />
           <Intro />
         </IRow>
         <Content />

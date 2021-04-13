@@ -54,11 +54,9 @@ function Header(props: any) {
       {!isMobileOnly ? (
         <ICol flex="auto">
           <div
-            className="box-gray-inner"
+            className="box-gray-inner hide-scrollbar"
             style={{
               width: "100%",
-              overflow: "scroll",
-              scrollbarWidth: "none",
             }}
           >
             <ISpace className="no-wrap" size={24}>
