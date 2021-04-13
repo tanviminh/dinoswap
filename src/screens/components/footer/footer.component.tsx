@@ -28,11 +28,11 @@ export function FooterComponent() {
           </ICol>
           <ICol>
             <h4>Contact us</h4>
-            <IRow justify="space-between" style={{ marginTop: 4 }}>
+            <ISpace style={{ marginTop: 4 }} size={8}>
               <img className="social" src={Images.FACEBOOK} />
               <img className="social" src={Images.TWITTER} />
               <img className="social" src={Images.TELEGRAM} />
-            </IRow>
+            </ISpace>
           </ICol>
         </IRow>
       </div>

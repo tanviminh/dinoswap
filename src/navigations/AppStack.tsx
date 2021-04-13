@@ -34,8 +34,8 @@ export function AppStack() {
 }
 
 function isRender(path: string) {
-  let item = AppRouter.find((item) => {
-    return item.path?.includes(path);
+  let item = AppRouter.find((obj: any) => {
+    return obj.path?.startsWith(path) && path != "/" && path;
   });
 
   if (item) {

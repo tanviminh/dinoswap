@@ -55,7 +55,11 @@ function Header(props: any) {
         <ICol flex="auto">
           <div
             className="box-gray-inner"
-            style={{ width: "100%", overflow: "scroll" }}
+            style={{
+              width: "100%",
+              overflow: "scroll",
+              scrollbarWidth: "none",
+            }}
           >
             <ISpace className="no-wrap" size={24}>
               <span className="no-wrap">

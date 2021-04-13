@@ -33,8 +33,8 @@ export function PoolStack() {
 }
 
 function isRender(path: string) {
-  let item = PoolRouter.find((item) => {
-    return item.path?.includes(path);
+  let item = PoolRouter.find((obj: any) => {
+    return obj.path?.startsWith(path) && path != "/" && path;
   });
 
   if (item) {
