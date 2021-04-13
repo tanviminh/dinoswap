@@ -6,7 +6,7 @@ import { values } from "lodash";
 import React, { useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 import { ModifierFlags } from "typescript";
 
 export function AddLiquidityScreen(props: any) {

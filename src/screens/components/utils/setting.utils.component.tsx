@@ -1,8 +1,11 @@
+import { Tooltip } from "antd";
 import { Colors, Icons } from "assets";
 import { ICol, IRow } from "components";
 import React, { useState } from "react";
 
 export function SettingUtilsComponent(props: any) {
+  const [toggle, setToggle] = useState(false);
+  const [toggle1, setToggle1] = useState(false);
   return (
     <div>
       <IRow>
@@ -23,63 +26,93 @@ export function SettingUtilsComponent(props: any) {
             </ICol>
           </IRow>
           <br />
-          <IRow>
-            <h5 style={{ color: Colors.GRAY }}>Slippage tolerance</h5>
-            <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
-          </IRow>
-          <IRow justify="space-between" style={{ marginTop: 10 }}>
-            <ICol>
-              <div
+          <Tooltip
+            className="pointer"
+            title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+          >
+            <IRow>
+              <h5 style={{ color: Colors.GRAY }}>Slippage tolerance</h5>
+              <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
+            </IRow>
+          </Tooltip>
+          <IRow
+            justify="space-between"
+            gutter={[8, 8]}
+            style={{ marginTop: 10 }}
+            wrap={false}
+          >
+            <ICol span={6}>
+              <IRow
                 style={{
                   padding: "4px 20px",
                   borderRadius: 100,
                   background: Colors.GRAY,
                 }}
+                className="pointer"
+                justify="center"
               >
                 <h5 style={{ color: "white" }}>0.1%</h5>
-              </div>
+              </IRow>
             </ICol>
-            <ICol>
-              <div
-                style={{
-                  padding: "4px 20px",
-                  borderRadius: 100,
-                  background: Colors.SECONDARY,
-                }}
-              >
-                <h5 style={{ color: "white" }}>0.1%</h5>
-              </div>
-            </ICol>
-            <ICol>
-              <div
+            <ICol span={6}>
+              <IRow
                 style={{
                   padding: "4px 20px",
                   borderRadius: 100,
                   background: Colors.GRAY,
                 }}
+                className="pointer"
+                justify="center"
               >
                 <h5 style={{ color: "white" }}>0.1%</h5>
-              </div>
+              </IRow>
             </ICol>
-            <ICol>
-              <div
+            <ICol span={6}>
+              <IRow
+                style={{
+                  padding: "4px 20px",
+                  borderRadius: 100,
+                  background: Colors.GRAY,
+                }}
+                className="pointer"
+                justify="center"
+              >
+                <h5 style={{ color: "white" }}>0.1%</h5>
+              </IRow>
+            </ICol>
+            <ICol span={6}>
+              <IRow
                 style={{
                   padding: "4px 20px",
                   borderRadius: 100,
                   //   border: "1px solid gray",
                   boxShadow: "inset 1px 1px 4px rgba(0, 0, 0, 0.2)",
                   background: "white",
+                  overflow: "hidden",
                 }}
+                className="pointer"
+                justify="center"
+                align="middle"
+                wrap={false}
               >
-                <h5 style={{ color: "black" }}>0.1%</h5>
-              </div>
+                <input
+                  className="input-h5"
+                  style={{ textAlign: "center", width: 40 }}
+                />
+                <span className="input-h5">%</span>
+              </IRow>
             </ICol>
           </IRow>
           <br />
-          <IRow>
-            <h5 style={{ color: Colors.GRAY }}>Transaction deadline</h5>
-            <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
-          </IRow>
+          <Tooltip
+            className="pointer"
+            title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+          >
+            <IRow>
+              <h5 style={{ color: Colors.GRAY }}>Transaction deadline</h5>
+              <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
+            </IRow>
+          </Tooltip>
           <IRow style={{ marginTop: 10 }} align="middle">
             <ICol>
               <div
@@ -91,7 +124,10 @@ export function SettingUtilsComponent(props: any) {
                   background: "white",
                 }}
               >
-                <h5 style={{ color: "black" }}>20</h5>
+                <input
+                  className="input-h5"
+                  style={{ textAlign: "center", width: 40 }}
+                />
               </div>
             </ICol>
             <ICol>
@@ -105,18 +141,60 @@ export function SettingUtilsComponent(props: any) {
             <h4>Interface Settings</h4>
           </ICol>
           <ICol style={{ marginTop: 10 }}>
-            <IRow>
-              <h5 style={{ color: Colors.GRAY }}>Slippage tolerance</h5>
-              <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
+            <IRow
+              onClick={() => {
+                setToggle(!toggle);
+              }}
+            >
+              <Tooltip
+                className="pointer"
+                title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+              >
+                <IRow>
+                  <h5 style={{ color: Colors.GRAY }}>Slippage tolerance</h5>
+                  <img
+                    src={Icons.QUESTION}
+                    style={{ width: 16, marginLeft: 8 }}
+                  />
+                </IRow>
+              </Tooltip>
+
               <ICol flex="auto" />
-              <img src={Icons.TOOGLE_ON} style={{ height: 28 }} />
+              <img
+                src={toggle ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
+                style={{ height: 28 }}
+              />
             </IRow>
-            <IRow style={{ marginTop: 10 }}>
-              <h5 style={{ color: Colors.GRAY }}>Disable Multihops</h5>
-              <img src={Icons.QUESTION} style={{ width: 16, marginLeft: 8 }} />
-              <ICol flex="auto" />
-              <img src={Icons.TOOGLE_OFF} style={{ height: 28 }} />
-            </IRow>
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <IRow
+                style={{ marginTop: 10 }}
+                onClick={() => {
+                  setToggle1(!toggle1);
+                }}
+              >
+                <Tooltip
+                  className="pointer"
+                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+                >
+                  <IRow>
+                    <h5 style={{ color: Colors.GRAY }}>Disable Multihops</h5>
+                    <img
+                      src={Icons.QUESTION}
+                      style={{ width: 16, marginLeft: 8 }}
+                    />
+                  </IRow>
+                </Tooltip>
+
+                <ICol flex="auto" />
+                <img
+                  src={toggle1 ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
+                  style={{ height: 28 }}
+                />
+              </IRow>
+            </Tooltip>
           </ICol>
         </ICol>
       </IRow>

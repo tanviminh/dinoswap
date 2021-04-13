@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Tabs } from "antd";
+import { Tabs, Tooltip } from "antd";
 import { ICol, IRow, ISpace } from "components";
 import { Icons } from "assets";
 import Modal from "antd/lib/modal/Modal";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 import { SettingUtilsComponent } from "./setting.utils.component";
 import { isMobileOnly } from "react-device-detect";
 const { TabPane } = Tabs;
@@ -15,32 +15,38 @@ interface Props {
 export function UtilsComponent() {
   const [showWallet, setShowWallet] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+  const [key, setKey] = useState("1");
   return (
     <div>
       <IRow
         justify="end"
+        style={{ height: 32 }}
         onClick={() => {
+          if (key != "1") {
+            return;
+          }
           setShowSetting(true);
         }}
       >
-        <img src={Icons.SET} id="swap-set" />
+        {key == "1" ? <img src={Icons.SET} id="swap-set" /> : null}
       </IRow>
-      <Tabs defaultActiveKey="1" onChange={() => {}}>
+
+      <Tabs
+        defaultActiveKey="1"
+        onChange={(keyActive) => {
+          setKey(keyActive);
+        }}
+      >
         <TabPane tab="Swap" key="1">
-          <Swap setShowWallet={setShowSetting} />
+          <Swap setShowWallet={setShowWallet} />
         </TabPane>
         <TabPane tab="+Liquidity" key="2">
-          <Liquidity setShowWallet={setShowSetting} />
+          <Liquidity setShowWallet={setShowWallet} />
         </TabPane>
-        <TabPane tab="Stake" key="3">
-          <Swap setShowWallet={setShowSetting} />
-        </TabPane>
-
-        <TabPane tab="-Liquidity" key="4">
-          <Liquidity setShowWallet={setShowSetting} />
+        <TabPane disabled={true} tab="Stake" key="3">
+          {/* <Swap setShowWallet={setShowWallet} /> */}
         </TabPane>
       </Tabs>
-
       <Modal
         visible={showWallet}
         title={null}
@@ -57,7 +63,6 @@ export function UtilsComponent() {
           }}
         />
       </Modal>
-
       <Modal
         visible={showSetting}
         title={null}
@@ -79,8 +84,9 @@ export function UtilsComponent() {
 }
 
 function Swap(props: Props) {
-  const [value, setValue] = useState("");
-  const RATE = 100.54543;
+  const [valueFrom, setValueFrom] = useState("");
+  const [valueTo, setValueTo] = useState("");
+  const RATE = 1.2;
 
   return (
     <div>
@@ -88,7 +94,7 @@ function Swap(props: Props) {
       <IRow>
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
-            <span className="brown small bold">Input</span>
+            <span className="brown small bold">From</span>
             <div className="box-white-outer" style={{ padding: 8 }}>
               <ISpace size={8}>
                 <img src={Icons.DINO} style={{ width: 20 }} />
@@ -102,21 +108,26 @@ function Swap(props: Props) {
               className="utils-input"
               placeholder="0.0"
               onChange={(e) => {
-                setValue(e.target.value);
+                setValueFrom(Number.parseFloat(e.target.value) + "");
+                setValueTo(Number.parseFloat(e.target.value) * RATE + "");
               }}
-              value={value}
+              value={valueFrom}
               type="number"
             />
           </IRow>
         </div>
       </IRow>
-      <IRow justify="center" style={{ margin: "12px 0px" }}>
+      <IRow justify="center" align="middle" style={{ margin: "12px 0px" }}>
         <img src={Icons.DOWN_BROWN} style={{ width: 20 }} />
+        <img
+          src={Icons.DOWN_BROWN}
+          style={{ width: 20, transform: "rotateX(180deg)" }}
+        />
       </IRow>
       <IRow>
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
-            <span className="brown small bold">Output</span>
+            <span className="brown small bold">To</span>
             <div className="box-white-outer" style={{ padding: 8 }}>
               <ISpace size={8}>
                 <img src={Icons.ETH} style={{ width: 20 }} />
@@ -130,10 +141,10 @@ function Swap(props: Props) {
               className="utils-input"
               placeholder="0.0"
               onChange={(e) => {
-                setValue(e.target.value);
+                setValueTo(Number.parseFloat(e.target.value) + "");
+                setValueFrom(Number.parseFloat(e.target.value) / RATE + "");
               }}
-              readOnly
-              value={value ? Number.parseFloat(value) * RATE : ""}
+              value={valueTo}
               type="number"
             />
           </IRow>
@@ -149,7 +160,12 @@ function Swap(props: Props) {
           <IRow>
             <span className="gray">28.188 ETH per WBTC</span>
             <ICol flex="auto" />
-            <img src={Icons.QUESTION} style={{ width: 16 }} />
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <img src={Icons.QUESTION} style={{ width: 16 }} />
+            </Tooltip>
           </IRow>
         </ICol>
 
@@ -160,7 +176,12 @@ function Swap(props: Props) {
           <IRow>
             <span className="gray">0.03529 WBTC</span>
             <ICol flex="auto" />
-            <img src={Icons.QUESTION} style={{ width: 16 }} />
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <img src={Icons.QUESTION} style={{ width: 16 }} />
+            </Tooltip>
           </IRow>
         </ICol>
 
@@ -171,7 +192,12 @@ function Swap(props: Props) {
           <IRow>
             <span className="gray">{"<0.01%"}</span>
             <ICol flex="auto" />
-            <img src={Icons.QUESTION} style={{ width: 16 }} />
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <img src={Icons.QUESTION} style={{ width: 16 }} />
+            </Tooltip>
           </IRow>
         </ICol>
 
@@ -182,7 +208,12 @@ function Swap(props: Props) {
           <IRow>
             <span className="gray">0.003 ETH</span>
             <ICol flex="auto" />
-            <img src={Icons.QUESTION} style={{ width: 16 }} />
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <img src={Icons.QUESTION} style={{ width: 16 }} />
+            </Tooltip>
           </IRow>
         </ICol>
       </IRow>

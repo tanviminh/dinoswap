@@ -1,12 +1,18 @@
-import { Dropdown, Menu } from "antd";
+import { PropertySafetyFilled } from "@ant-design/icons";
+import { Dropdown, Menu, Tooltip } from "antd";
+import Modal from "antd/lib/modal/Modal";
 import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import React, { useState, useEffect } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { HeaderComponent } from "screens/components/header/header.component";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 
 export function DinoPoolScreen() {
+  const [showWallet, setShowWallet] = useState(false);
+
   return (
     <div
       style={{
@@ -31,23 +37,43 @@ export function DinoPoolScreen() {
         </IRow>
         <br />
         <br />
-        <Content />
+        <Content showWallet={showWallet} setShowWallet={setShowWallet} />
 
         <Footer />
       </ICol>
+      <Modal
+        visible={showWallet}
+        title={null}
+        footer={null}
+        closable={false}
+        onCancel={() => {
+          setShowWallet(false);
+        }}
+        width={isMobileOnly ? "100%" : "25%"}
+      >
+        <ConnectWalletScreen
+          close={() => {
+            setShowWallet(false);
+          }}
+        />
+      </Modal>
     </div>
   );
 }
 
-function Content() {
+function Content(props: any) {
   return (
     <ICol>
       <IRow gutter={[20, 20]}>
         <ICol>
           <ISpace size={20}>
-            <img src={Icons.LIVE_FINISH} style={{ height: 20 }} />
-            <ISpace size={12}>
-              <img src={Icons.TOOGLE_ON} style={{ height: 20 }} />
+            <img
+              src={Icons.LIVE_FINISH}
+              style={{ height: 36 }}
+              className="pointer"
+            />
+            <ISpace size={12} className="pointer">
+              <img src={Icons.TOOGLE_ON} style={{ height: 36 }} />
               <span className="pink">Stack only</span>
             </ISpace>
           </ISpace>
@@ -60,7 +86,7 @@ function Content() {
         {[{}, {}, {}, {}, {}, {}, {}].map((item, index) => {
           return (
             <ICol xs={24} md={12} lg={8} key={index}>
-              <Item />
+              <Item {...props} />
             </ICol>
           );
         })}
@@ -69,7 +95,7 @@ function Content() {
   );
 }
 
-function Item() {
+function Item(props: any) {
   let history = useHistory();
   const [showDetail, setShowDetail] = useState(false);
   return (
@@ -100,7 +126,14 @@ function Item() {
       <br />
       <br />
       <IRow>
-        <div className="button fit">Unlock wallet</div>
+        <div
+          className="button fit"
+          onClick={() => {
+            props.setShowWallet(true);
+          }}
+        >
+          Unlock wallet
+        </div>
       </IRow>
       <br />
       <IRow>
@@ -121,7 +154,12 @@ function Item() {
         <ICol span={12}>
           <IRow justify="space-between">
             <span className=" gray bold">0.0000</span>
-            <img src={Icons.QUESTION} style={{ width: 16 }} />
+            <Tooltip
+              className="pointer"
+              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+            >
+              <img src={Icons.QUESTION} style={{ width: 16 }} />
+            </Tooltip>
           </IRow>
         </ICol>
       </IRow>

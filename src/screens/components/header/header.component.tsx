@@ -4,7 +4,7 @@ import { ICol, IRow, ISpace } from "components";
 import React, { useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 export function HeaderComponent(props: any) {
   let history = useHistory();
   const [showWallet, setShowWallet] = useState(false);

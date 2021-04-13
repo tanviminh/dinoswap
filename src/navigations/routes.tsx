@@ -85,7 +85,7 @@ export const AppRouter: RouteProps[] = [
     component: DocScreen,
   },
   {
-    path: "/governance",
+    path: ["/governance", "/governance/forum"],
     exact: true,
     component: GovernanceScreen,
   },

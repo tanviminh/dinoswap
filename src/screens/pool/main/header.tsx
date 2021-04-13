@@ -2,7 +2,7 @@ import { Colors, Icons, Images } from "assets";
 import { useHistory } from "react-router-dom";
 import { ICol, IRow, ISpace } from "components";
 import React, { useState } from "react";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 import Modal from "antd/lib/modal/Modal";
 import { isMobileOnly } from "react-device-detect";
 

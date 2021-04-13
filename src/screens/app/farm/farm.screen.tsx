@@ -1,12 +1,16 @@
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu, Tooltip } from "antd";
+import Modal from "antd/lib/modal/Modal";
 import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import React, { useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { HeaderComponent } from "screens/components/header/header.component";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 
 export function FarmScreen() {
+  const [showWallet, setShowWallet] = useState(false);
   return (
     <div
       style={{
@@ -27,15 +31,31 @@ export function FarmScreen() {
             </span>
           </ICol>
         </IRow>
-        <Content />
+        <Content showWallet={showWallet} setShowWallet={setShowWallet} />
 
         <Footer />
       </ICol>
+      <Modal
+        visible={showWallet}
+        title={null}
+        footer={null}
+        closable={false}
+        onCancel={() => {
+          setShowWallet(false);
+        }}
+        width={isMobileOnly ? "100%" : "25%"}
+      >
+        <ConnectWalletScreen
+          close={() => {
+            setShowWallet(false);
+          }}
+        />
+      </Modal>
     </div>
   );
 }
 
-function Content() {
+function Content(props: any) {
   const menu = (
     <Menu>
       <Menu.Item>
@@ -53,12 +73,12 @@ function Content() {
     <ICol>
       <br />
       <IRow gutter={[20, 20]} align="bottom">
-        <ICol lg={9} md={6} xs={24}>
+        <ICol lg={9} md={6} xs={24} className="pointer">
           <ISpace size={20}>
             <img src={Icons.LIVE_FINISH} style={{ height: 36 }} />
           </ISpace>
         </ICol>
-        <ICol lg={5} md={6}>
+        <ICol lg={5} md={6} className="pointer">
           <ISpace size={20}>
             <img src={Icons.TOOGLE_ON} style={{ height: 36 }} />
             <span className="pink">Stack only</span>
@@ -104,7 +124,7 @@ function Content() {
         <ICol style={{ width: "100%" }}>
           {[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}].map(
             (item, index) => {
-              return <Item key={index} />;
+              return <Item key={index} {...props} />;
             }
           )}
         </ICol>
@@ -130,7 +150,7 @@ function Content() {
   );
 }
 
-function Item() {
+function Item(props: any) {
   let history = useHistory();
   const [showDetail, setShowDetail] = useState(false);
   return (
@@ -162,7 +182,13 @@ function Item() {
           <br />
           <ISpace size={12}>
             <h5 className="primary">85.58%</h5>
-            <img src={Icons.QUESTION} style={{ height: 16 }} />
+            <Tooltip title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.">
+              <img
+                className="pointer"
+                src={Icons.QUESTION}
+                style={{ height: 16 }}
+              />
+            </Tooltip>
           </ISpace>
         </ICol>
         <ICol xs={12} md={8} lg={5}>
@@ -170,7 +196,13 @@ function Item() {
           <br />
           <ISpace size={12}>
             <h5 className="primary">$855.554.554</h5>
-            <img src={Icons.QUESTION} style={{ height: 16 }} />
+            <Tooltip title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.">
+              <img
+                className="pointer"
+                src={Icons.QUESTION}
+                style={{ height: 16 }}
+              />
+            </Tooltip>
           </ISpace>
         </ICol>
         <ICol xs={12} md={8} lg={4}>
@@ -178,7 +210,13 @@ function Item() {
           <br />
           <ISpace size={12}>
             <h5 className="primary">40x</h5>
-            <img src={Icons.QUESTION} style={{ height: 16 }} />
+            <Tooltip title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.">
+              <img
+                className="pointer"
+                src={Icons.QUESTION}
+                style={{ height: 16 }}
+              />
+            </Tooltip>
           </ISpace>
         </ICol>
         <ICol xs={12} md={8} lg={3}>
@@ -256,7 +294,12 @@ function Item() {
               <span className="bold" style={{ opacity: 0 }}>
                 space
               </span>
-              <div className="button center pointer">
+              <div
+                className="button center pointer"
+                onClick={() => {
+                  props.setShowWallet(true);
+                }}
+              >
                 <h5 className="white">Unlock wallet</h5>
               </div>
             </div>

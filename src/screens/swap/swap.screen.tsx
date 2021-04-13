@@ -5,8 +5,9 @@ import { ICol, IRow, ISpace } from "components";
 import { values } from "lodash";
 import React, { useState } from "react";
 import { isMobileOnly } from "react-device-detect";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
-import { SettingSwapScreen } from "./setting.swap.screen";
+import { SettingUtilsComponent } from "screens/components/utils/setting.utils.component";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
+import { Tooltip } from "antd";
 
 export function SwapScreen(props: any) {
   return (
@@ -32,8 +33,10 @@ export function SwapScreen(props: any) {
 }
 
 export function SwapComponent() {
-  const RATE = 100.54543;
-  const [value, setValue] = useState("");
+  const [valueFrom, setValueFrom] = useState("");
+  const [valueTo, setValueTo] = useState("");
+  const RATE = 1.2;
+
   const [showWallet, setShowWallet] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
 
@@ -72,12 +75,13 @@ export function SwapComponent() {
               </IRow>
               <IRow>
                 <input
-                  className="swap-input"
+                  className="utils-input"
                   placeholder="0.0"
                   onChange={(e) => {
-                    setValue(e.target.value);
+                    setValueFrom(Number.parseFloat(e.target.value) + "");
+                    setValueTo(Number.parseFloat(e.target.value) * RATE + "");
                   }}
-                  value={value}
+                  value={valueFrom}
                   type="number"
                 />
               </IRow>
@@ -106,10 +110,14 @@ export function SwapComponent() {
               </IRow>
               <IRow>
                 <input
-                  className="swap-input"
+                  className="utils-input"
                   placeholder="0.0"
-                  readOnly
-                  value={value ? Number.parseFloat(value) * RATE : ""}
+                  onChange={(e) => {
+                    setValueTo(Number.parseFloat(e.target.value) + "");
+                    setValueFrom(Number.parseFloat(e.target.value) / RATE + "");
+                  }}
+                  value={valueTo}
+                  type="number"
                 />
               </IRow>
             </ICol>
@@ -123,7 +131,12 @@ export function SwapComponent() {
               <IRow>
                 <span className="swap-text-gray">28.188 ETH per WBTC</span>
                 <ICol flex="auto" />
-                <img src={Icons.QUESTION} style={{ width: 16 }} />
+                <Tooltip
+                  className="pointer"
+                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+                >
+                  <img src={Icons.QUESTION} style={{ width: 16 }} />
+                </Tooltip>
               </IRow>
             </ICol>
 
@@ -134,7 +147,12 @@ export function SwapComponent() {
               <IRow>
                 <span className="swap-text-gray">0.03529 WBTC</span>
                 <ICol flex="auto" />
-                <img src={Icons.QUESTION} style={{ width: 16 }} />
+                <Tooltip
+                  className="pointer"
+                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+                >
+                  <img src={Icons.QUESTION} style={{ width: 16 }} />
+                </Tooltip>
               </IRow>
             </ICol>
 
@@ -145,7 +163,12 @@ export function SwapComponent() {
               <IRow>
                 <span className="swap-text-gray">{"<0.01%"}</span>
                 <ICol flex="auto" />
-                <img src={Icons.QUESTION} style={{ width: 16 }} />
+                <Tooltip
+                  className="pointer"
+                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+                >
+                  <img src={Icons.QUESTION} style={{ width: 16 }} />
+                </Tooltip>
               </IRow>
             </ICol>
 
@@ -156,7 +179,12 @@ export function SwapComponent() {
               <IRow>
                 <span className="swap-text-gray">0.003 ETH</span>
                 <ICol flex="auto" />
-                <img src={Icons.QUESTION} style={{ width: 16 }} />
+                <Tooltip
+                  className="pointer"
+                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+                >
+                  <img src={Icons.QUESTION} style={{ width: 16 }} />
+                </Tooltip>
               </IRow>
             </ICol>
           </IRow>
@@ -196,11 +224,11 @@ export function SwapComponent() {
         footer={null}
         closable={false}
         onCancel={() => {
-          setShowWallet(false);
+          setShowSetting(false);
         }}
-        width={"25%"}
+        width={isMobileOnly ? "100%" : "25%"}
       >
-        <SettingSwapScreen
+        <SettingUtilsComponent
           close={() => {
             setShowSetting(false);
           }}

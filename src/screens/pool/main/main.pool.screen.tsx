@@ -6,7 +6,7 @@ import { values } from "lodash";
 import "./main.pool.style.less";
 import { useHistory } from "react-router-dom";
 import Modal from "antd/lib/modal/Modal";
-import { ConnectWalletScreen } from "screens/wallet/connect.wallet.screen";
+import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 
 export function MainPoolScreen(props: any) {
   return (

@@ -4,7 +4,7 @@ import { ICol, IRow, ISpace } from "components";
 import React, { useState } from "react";
 import { FooterComponent } from "screens/components/footer/footer.component";
 import { HeaderComponent } from "screens/components/header/header.component";
-import { UtilsComponent } from "screens/components/utils/utils.component";
+import { useHistory } from "react-router-dom";
 const { TabPane } = Tabs;
 interface Props {
   setShowWallet: any;
@@ -34,9 +34,15 @@ export function GovernanceScreen() {
 }
 
 function Content() {
+  let history = useHistory();
+  let path = history.location.pathname;
+  let activeKey = 1;
+  if (path.includes("forum")) {
+    activeKey = 2;
+  }
   return (
     <div>
-      <Tabs defaultActiveKey="1" onChange={() => {}}>
+      <Tabs defaultActiveKey={activeKey + ""} onChange={() => {}}>
         <TabPane tab="Timelook" key="1">
           <Timelook />
         </TabPane>

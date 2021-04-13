@@ -3,12 +3,13 @@ import React from "react";
 import { Layout } from "antd";
 import { Route, useHistory, Switch } from "react-router-dom";
 import { SliderComponent } from "screens/components/slider/slider.component";
+import { checkRender } from "./utils";
 const { Content } = Layout;
 
 export function AppStack() {
   let history = useHistory();
   let path = history.location.pathname;
-  if (!isRender(path)) {
+  if (!checkRender(AppRouter, path)) {
     return null;
   }
   return (
@@ -31,15 +32,4 @@ export function AppStack() {
       </Layout>
     </div>
   );
-}
-
-function isRender(path: string) {
-  let item = AppRouter.find((obj: any) => {
-    return obj.path?.startsWith(path) && path != "/" && path;
-  });
-
-  if (item) {
-    return true;
-  }
-  return false;
 }

@@ -43,9 +43,30 @@ function Header(props: Props) {
           </IRow>
           <br />
           <ISpace size={24}>
-            <h4>Trade</h4>
-            <h4>Docs</h4>
-            <h4>Forum</h4>
+            <h4
+              className="pointer"
+              onClick={() => {
+                history.push("/swap");
+              }}
+            >
+              Trade
+            </h4>
+            <h4
+              className="point"
+              onClick={() => {
+                history.push("/doc");
+              }}
+            >
+              Docs
+            </h4>
+            <h4
+              className="point"
+              onClick={() => {
+                history.push("/governance/forum");
+              }}
+            >
+              Forum
+            </h4>
           </ISpace>
         </ICol>
       </div>
@@ -64,9 +85,30 @@ function Header(props: Props) {
       <ICol md={24} lg={12}>
         <IRow justify="end" align="middle">
           <ISpace size={24}>
-            <h5>Trade</h5>
-            <h5>Docs</h5>
-            <h5>Forum</h5>
+            <h5
+              className="pointer"
+              onClick={() => {
+                history.push("/swap");
+              }}
+            >
+              Trade
+            </h5>
+            <h5
+              className="pointer"
+              onClick={() => {
+                history.push("/doc");
+              }}
+            >
+              Docs
+            </h5>
+            <h5
+              className="pointer"
+              onClick={() => {
+                history.push("/governance/forum");
+              }}
+            >
+              Forum
+            </h5>
             <div
               className="button"
               onClick={() => {
@@ -130,7 +172,14 @@ function Intro(props: Props) {
               >
                 Enter app
               </div>
-              <div className="button-outer">Learn more</div>
+              <div
+                className="button-outer"
+                onClick={() => {
+                  history.push("/doc");
+                }}
+              >
+                Learn more
+              </div>
             </ISpace>
           </div>
         </ICol>

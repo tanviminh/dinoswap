@@ -1,8 +1,13 @@
 .hide-scrollbar {
   overflow: auto;
   -ms-overflow-style: none; /* IE 11 */
-  scrollbar-width: none; /* Firefox 64 */
+  scrollbar-width: none !important; /* Firefox 64 */
+  // overflow: -moz-scrollbars-none;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .white {
   color: white;
 }

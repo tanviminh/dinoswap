@@ -3,11 +3,12 @@ import { PoolRouter } from "navigations/routes";
 import React from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
 import { Header } from "screens/pool/main/header";
+import { checkRender } from "./utils";
 
 export function PoolStack() {
   let history = useHistory();
   let path = history.location.pathname;
-  if (!isRender(path)) {
+  if (!checkRender(PoolRouter, path)) {
     return null;
   }
   return (
@@ -30,15 +31,4 @@ export function PoolStack() {
       </div>
     </div>
   );
-}
-
-function isRender(path: string) {
-  let item = PoolRouter.find((obj: any) => {
-    return obj.path?.startsWith(path) && path != "/" && path;
-  });
-
-  if (item) {
-    return true;
-  }
-  return false;
 }

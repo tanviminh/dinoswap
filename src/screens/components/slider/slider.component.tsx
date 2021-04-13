@@ -171,13 +171,12 @@ function Item(props: ChildProps) {
         style={{ height: 60, cursor: "pointer", overflow: "hidden" }}
         align="middle"
         onClick={() => {
-          props.setCollapsed(true);
-
           if (childs?.length) {
             setOpen(!open);
             return;
           }
           history.push(item.link);
+          props.setCollapsed(true);
         }}
       >
         <ICol flex="auto">

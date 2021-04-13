@@ -1,10 +1,11 @@
+import { Tooltip } from "antd";
 import { Colors, Icons } from "assets";
 import { ICol, IRow } from "components";
 import React, { useState } from "react";
 
 const items = [
   {
-    title: "Install Metamask",
+    title: "Metamask",
     icon: Icons.METAMASK,
   },
   {
@@ -54,10 +55,12 @@ export function ConnectWalletScreen(props: any) {
 
           <br />
 
-          <IRow justify="center">
-            <span style={{ color: Colors.GRAY }}>Learn how to connect?</span>
-            <img src={Icons.QUESTION} style={{ width: 20, marginLeft: 8 }} />
-          </IRow>
+          <Tooltip title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.">
+            <IRow justify="center" className="pointer">
+              <span style={{ color: Colors.GRAY }}>Learn how to connect?</span>
+              <img src={Icons.QUESTION} style={{ width: 20, marginLeft: 8 }} />
+            </IRow>
+          </Tooltip>
         </ICol>
       </IRow>
     </div>
@@ -67,7 +70,7 @@ export function ConnectWalletScreen(props: any) {
 function Item(props: any) {
   const { title, icon } = props.data;
   return (
-    <div style={{ marginTop: 10 }}>
+    <div className="pointer" style={{ marginTop: 10 }}>
       <IRow
         style={{
           padding: 10,
