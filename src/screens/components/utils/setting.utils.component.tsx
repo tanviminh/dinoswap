@@ -6,6 +6,7 @@ import React, { useState } from "react";
 export function SettingUtilsComponent(props: any) {
   const [toggle, setToggle] = useState(false);
   const [toggle1, setToggle1] = useState(false);
+  const [slippage, setSlipPage] = useState("0.1%");
   return (
     <div>
       <IRow>
@@ -41,45 +42,31 @@ export function SettingUtilsComponent(props: any) {
             style={{ marginTop: 10 }}
             wrap={false}
           >
-            <ICol span={6}>
-              <IRow
-                style={{
-                  padding: "4px 20px",
-                  borderRadius: 100,
-                  background: Colors.GRAY,
-                }}
-                className="pointer"
-                justify="center"
-              >
-                <h5 style={{ color: "white" }}>0.1%</h5>
-              </IRow>
-            </ICol>
-            <ICol span={6}>
-              <IRow
-                style={{
-                  padding: "4px 20px",
-                  borderRadius: 100,
-                  background: Colors.GRAY,
-                }}
-                className="pointer"
-                justify="center"
-              >
-                <h5 style={{ color: "white" }}>0.1%</h5>
-              </IRow>
-            </ICol>
-            <ICol span={6}>
-              <IRow
-                style={{
-                  padding: "4px 20px",
-                  borderRadius: 100,
-                  background: Colors.GRAY,
-                }}
-                className="pointer"
-                justify="center"
-              >
-                <h5 style={{ color: "white" }}>0.1%</h5>
-              </IRow>
-            </ICol>
+            {["0.1%", "0.2%", "0.3%"].map((item, index) => {
+              return (
+                <ICol
+                  span={6}
+                  key={index}
+                  onClick={() => {
+                    setSlipPage(item);
+                  }}
+                >
+                  <IRow
+                    style={{
+                      padding: "4px 20px",
+                      borderRadius: 100,
+                      background:
+                        item == slippage ? Colors.SECONDARY : Colors.GRAY,
+                    }}
+                    className="pointer"
+                    justify="center"
+                  >
+                    <h5 style={{ color: "white" }}>{item}</h5>
+                  </IRow>
+                </ICol>
+              );
+            })}
+
             <ICol span={6}>
               <IRow
                 style={{
@@ -95,11 +82,13 @@ export function SettingUtilsComponent(props: any) {
                 align="middle"
                 wrap={false}
               >
-                <input
+                <h5>{slippage}</h5>
+
+                {/* <input
                   className="input-h5"
                   style={{ textAlign: "center", width: 40 }}
                 />
-                <span className="input-h5">%</span>
+                <span className="input-h5">%</span> */}
               </IRow>
             </ICol>
           </IRow>
@@ -161,40 +150,37 @@ export function SettingUtilsComponent(props: any) {
 
               <ICol flex="auto" />
               <img
+                className="pointer"
                 src={toggle ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
                 style={{ height: 28 }}
               />
             </IRow>
-            <Tooltip
-              className="pointer"
-              title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
-            >
-              <IRow
-                style={{ marginTop: 10 }}
-                onClick={() => {
-                  setToggle1(!toggle1);
-                }}
-              >
-                <Tooltip
-                  className="pointer"
-                  title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
-                >
-                  <IRow>
-                    <h5 style={{ color: Colors.GRAY }}>Disable Multihops</h5>
-                    <img
-                      src={Icons.QUESTION}
-                      style={{ width: 16, marginLeft: 8 }}
-                    />
-                  </IRow>
-                </Tooltip>
 
-                <ICol flex="auto" />
-                <img
-                  src={toggle1 ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
-                  style={{ height: 28 }}
-                />
-              </IRow>
-            </Tooltip>
+            <IRow
+              style={{ marginTop: 10 }}
+              onClick={() => {
+                setToggle1(!toggle1);
+              }}
+            >
+              <Tooltip
+                className="pointer"
+                title="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed."
+              >
+                <IRow>
+                  <h5 style={{ color: Colors.GRAY }}>Disable Multihops</h5>
+                  <img
+                    src={Icons.QUESTION}
+                    style={{ width: 16, marginLeft: 8 }}
+                  />
+                </IRow>
+              </Tooltip>
+
+              <ICol flex="auto" />
+              <img
+                src={toggle1 ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
+                style={{ height: 28 }}
+              />
+            </IRow>
           </ICol>
         </ICol>
       </IRow>

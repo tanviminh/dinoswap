@@ -3,6 +3,7 @@ import { Colors, Icons, Images } from "assets";
 import { ICol, IRow, ISpace } from "components";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { LanguageComponent } from "../utils/language.component";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -93,7 +94,7 @@ export function SliderComponent() {
         }
         setOpend(true);
       }}
-      style={{ background: "white" }}
+      style={{ background: "white", overflow: "hidden" }}
     >
       <IRow>
         <ICol>
@@ -133,14 +134,8 @@ export function SliderComponent() {
           })}
           <br />
           <br />
-          <Item
-            collapsed={collapsed}
-            item={{
-              title: "ENG",
-              icon: Icons.ENG,
-              link: "/",
-            }}
-          />
+
+          <LanguageComponent />
         </ICol>
       </IRow>
     </Sider>

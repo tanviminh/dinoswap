@@ -6,6 +6,8 @@ import Modal from "antd/lib/modal/Modal";
 import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
 import { SettingUtilsComponent } from "./setting.utils.component";
 import { isMobileOnly } from "react-device-detect";
+import { ListCoinComponent } from "./list.coin.component";
+import { totalmem } from "node:os";
 const { TabPane } = Tabs;
 interface Props {
   setShowWallet: any;
@@ -15,6 +17,7 @@ interface Props {
 export function UtilsComponent() {
   const [showWallet, setShowWallet] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+
   const [key, setKey] = useState("1");
   return (
     <div>
@@ -45,6 +48,9 @@ export function UtilsComponent() {
         </TabPane>
         <TabPane disabled={true} tab="Stake" key="3">
           {/* <Swap setShowWallet={setShowWallet} /> */}
+        </TabPane>
+        <TabPane tab="-Liquidity" key="4">
+          <Liquidity setShowWallet={setShowWallet} />
         </TabPane>
       </Tabs>
       <Modal
@@ -83,10 +89,15 @@ export function UtilsComponent() {
   );
 }
 
-function Swap(props: Props) {
+const intialState: any = {};
+export function Swap(props: Props) {
   const [valueFrom, setValueFrom] = useState("");
   const [valueTo, setValueTo] = useState("");
   const RATE = 1.2;
+  //null or from or to
+  const [showListCoin, setShowListCoin] = useState("");
+  const [from, setFrom] = useState(intialState);
+  const [to, setTo] = useState(intialState);
 
   return (
     <div>
@@ -95,10 +106,21 @@ function Swap(props: Props) {
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
             <span className="brown small bold">From</span>
-            <div className="box-white-outer" style={{ padding: 8 }}>
+            <div
+              className="box-white-outer pointer"
+              style={{ padding: 8 }}
+              onClick={() => {
+                setShowListCoin("from");
+              }}
+            >
               <ISpace size={8}>
-                <img src={Icons.DINO} style={{ width: 20 }} />
-                <span className="brown bold">DINO</span>
+                <img
+                  src={from.icon ? from.icon : Icons.DINO}
+                  style={{ width: 20 }}
+                />
+                <span className="brown bold">
+                  {from.title ? from.title : "DINO"}
+                </span>
                 <img src={Icons.DOWN_BROWN} style={{ width: 20 }} />
               </ISpace>
             </div>
@@ -128,10 +150,21 @@ function Swap(props: Props) {
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
             <span className="brown small bold">To</span>
-            <div className="box-white-outer" style={{ padding: 8 }}>
+            <div
+              className="box-white-outer pointer"
+              style={{ padding: 8 }}
+              onClick={() => {
+                setShowListCoin("to");
+              }}
+            >
               <ISpace size={8}>
-                <img src={Icons.ETH} style={{ width: 20 }} />
-                <span className="brown bold">ETH</span>
+                <img
+                  src={to.icon ? to.icon : Icons.ETH}
+                  style={{ width: 20 }}
+                />
+                <span className="brown bold">
+                  {to.title ? to.title : "ETH"}
+                </span>
                 <img src={Icons.DOWN_BROWN} style={{ width: 20 }} />
               </ISpace>
             </div>
@@ -227,11 +260,31 @@ function Swap(props: Props) {
       >
         Connect wallet
       </div>
+
+      <ListCoinComponent
+        visible={showListCoin}
+        setVisible={setShowListCoin}
+        callback={(item: any) => {
+          if (showListCoin === "from") {
+            setFrom(item);
+            return;
+          }
+
+          if (showListCoin === "to") {
+            setTo(item);
+            return;
+          }
+        }}
+      />
     </div>
   );
 }
 
-function Liquidity(props: Props) {
+export function Liquidity(props: Props) {
+  //null or from or to
+  const [showListCoin, setShowListCoin] = useState("");
+  const [from, setFrom] = useState(intialState);
+  const [to, setTo] = useState(intialState);
   return (
     <div>
       <br />
@@ -239,10 +292,21 @@ function Liquidity(props: Props) {
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
             <span className="brown small bold">Input</span>
-            <div className="box-white-outer" style={{ padding: 8 }}>
+            <div
+              className="box-white-outer pointer"
+              style={{ padding: 8 }}
+              onClick={() => {
+                setShowListCoin("from");
+              }}
+            >
               <ISpace size={8}>
-                <img src={Icons.DINO} style={{ width: 20 }} />
-                <span className="brown bold">DINO</span>
+                <img
+                  src={from.icon ? from.icon : Icons.DINO}
+                  style={{ width: 20 }}
+                />
+                <span className="brown bold">
+                  {from.title ? from.title : "DINO"}
+                </span>
                 <img src={Icons.DOWN_BROWN} style={{ width: 20 }} />
               </ISpace>
             </div>
@@ -259,10 +323,21 @@ function Liquidity(props: Props) {
         <div className="box-pink-inner" style={{ padding: 12 }}>
           <IRow justify="space-between">
             <span className="brown small bold">Output</span>
-            <div className="box-white-outer" style={{ padding: 8 }}>
+            <div
+              className="box-white-outer pointer"
+              style={{ padding: 8 }}
+              onClick={() => {
+                setShowListCoin("to");
+              }}
+            >
               <ISpace size={8}>
-                <img src={Icons.ETH} style={{ width: 20 }} />
-                <span className="brown bold">ETH</span>
+                <img
+                  src={to.icon ? to.icon : Icons.ETH}
+                  style={{ width: 20 }}
+                />
+                <span className="brown bold">
+                  {to.title ? to.title : "ETH"}
+                </span>
                 <img src={Icons.DOWN_BROWN} style={{ width: 20 }} />
               </ISpace>
             </div>
@@ -290,6 +365,21 @@ function Liquidity(props: Props) {
         position. These tokens automatically earn fees proportional to your
         share of the pool, and can be redeemed at any time
       </span>
+      <ListCoinComponent
+        visible={showListCoin}
+        setVisible={setShowListCoin}
+        callback={(item: any) => {
+          if (showListCoin === "from") {
+            setFrom(item);
+            return;
+          }
+
+          if (showListCoin === "to") {
+            setTo(item);
+            return;
+          }
+        }}
+      />
     </div>
   );
 }

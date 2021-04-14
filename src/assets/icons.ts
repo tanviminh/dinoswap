@@ -30,7 +30,9 @@ import FORUM from "./icons/forum.svg";
 import FARM from "./icons/farm.svg";
 import GOVERNANCE from "./icons/governance.svg";
 import ENG from "./icons/eng.svg";
-import LIVE_FINISH from "./icons/live-finish.svg";
+import RUS from "./icons/rus.svg";
+import LIVE_ON from "./icons/live-on.svg";
+import FINISHED_ON from "./icons/finished-on.svg";
 import DOWN_SECONDARY from "./icons/down-secondary.svg";
 import DINO from "./icons/dino.svg";
 import SWAP_GRAY from "./icons/swap-gray.svg";
@@ -74,7 +76,9 @@ export {
   FARM,
   GOVERNANCE,
   ENG,
-  LIVE_FINISH,
+  RUS,
+  LIVE_ON,
+  FINISHED_ON,
   DOWN_SECONDARY,
   DINO,
   SWAP_GRAY,

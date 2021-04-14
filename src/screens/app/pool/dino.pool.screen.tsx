@@ -62,20 +62,35 @@ export function DinoPoolScreen() {
 }
 
 function Content(props: any) {
+  const [live, setLive] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <ICol>
       <IRow gutter={[20, 20]}>
         <ICol>
           <ISpace size={20}>
             <img
-              src={Icons.LIVE_FINISH}
+              src={live ? Icons.LIVE_ON : Icons.FINISHED_ON}
               style={{ height: 36 }}
               className="pointer"
+              onClick={() => {
+                setLive(!live);
+              }}
             />
-            <ISpace size={12} className="pointer">
-              <img src={Icons.TOOGLE_ON} style={{ height: 36 }} />
-              <span className="pink">Stack only</span>
-            </ISpace>
+            <div
+              className="pointer"
+              onClick={() => {
+                setToggle(!toggle);
+              }}
+            >
+              <ISpace size={12}>
+                <img
+                  src={toggle ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
+                  style={{ height: 36 }}
+                />
+                <span className="pink">Stack only</span>
+              </ISpace>
+            </div>
           </ISpace>
         </ICol>
       </IRow>

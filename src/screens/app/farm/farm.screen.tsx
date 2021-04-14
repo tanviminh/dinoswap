@@ -1,7 +1,7 @@
 import { Dropdown, Menu, Tooltip } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import { Colors, Icons, Images } from "assets";
-import { ICol, IRow, ISpace } from "components";
+import { ICol, IRow, ISpace, ISwitch } from "components";
 import React, { useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
@@ -56,6 +56,8 @@ export function FarmScreen() {
 }
 
 function Content(props: any) {
+  const [live, setLive] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const menu = (
     <Menu>
       <Menu.Item>
@@ -73,14 +75,35 @@ function Content(props: any) {
     <ICol>
       <br />
       <IRow gutter={[20, 20]} align="bottom">
-        <ICol lg={9} md={6} xs={24} className="pointer">
+        <ICol
+          lg={9}
+          md={6}
+          xs={24}
+          className="pointer"
+          onClick={() => {
+            setLive(!live);
+          }}
+        >
           <ISpace size={20}>
-            <img src={Icons.LIVE_FINISH} style={{ height: 36 }} />
+            <img
+              src={live ? Icons.LIVE_ON : Icons.FINISHED_ON}
+              style={{ height: 36 }}
+            />
           </ISpace>
         </ICol>
-        <ICol lg={5} md={6} className="pointer">
+        <ICol
+          lg={5}
+          md={6}
+          className="pointer"
+          onClick={() => {
+            setToggle(!toggle);
+          }}
+        >
           <ISpace size={20}>
-            <img src={Icons.TOOGLE_ON} style={{ height: 36 }} />
+            <img
+              src={toggle ? Icons.TOOGLE_ON : Icons.TOOGLE_OFF}
+              style={{ height: 36 }}
+            />
             <span className="pink">Stack only</span>
           </ISpace>
         </ICol>

@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useHistory } from "react-router-dom";
 import { ConnectWalletScreen } from "screens/components/utils/connect.wallet.screen";
+import { Liquidity } from "screens/components/utils/utils.component";
 
 // import "./add.liquidity.style.less";
 export function CreatePairScreen(props: any) {
@@ -65,92 +66,10 @@ function Content() {
             </ICol>
           </IRow>
 
-          <IRow>
-            <ICol style={{ width: "100%" }}>
-              <div className="swap-item-caculator">
-                <ICol>
-                  <IRow>
-                    <ICol>
-                      <span style={{ color: Colors.BROWN }}>From</span>
-                    </ICol>
-                    <ICol flex="auto"></ICol>
-                    <ICol>
-                      <div className="swap-container-coin">
-                        <ISpace size={8}>
-                          <img src={Icons.ETH} className="swap-icon-coin" />
-                          <span style={{ color: Colors.BROWN }}>ETH</span>
-                          <img
-                            src={Icons.ARROW_DOWN}
-                            className="swap-icon-coin"
-                          />
-                        </ISpace>
-                      </div>
-                    </ICol>
-                  </IRow>
-                  <IRow>
-                    <input
-                      className="swap-input"
-                      placeholder="0.0"
-                      // onChange={(e) => {
-                      //   setValue(e.target.value);
-                      // }}
-                      // value={value}
-                      type="number"
-                    />
-                  </IRow>
-                </ICol>
-              </div>
-              <IRow justify="center">
-                <img
-                  src={Icons.PLUS}
-                  style={{ height: 12, margin: "12px 0px" }}
-                />
-              </IRow>
-
-              <div className="swap-item-caculator">
-                <ICol>
-                  <IRow>
-                    <ICol>
-                      <span style={{ color: Colors.BROWN }}>From</span>
-                    </ICol>
-                    <ICol flex="auto"></ICol>
-                    <ICol>
-                      <div className="swap-container-coin">
-                        <ISpace size={8}>
-                          <img src={Icons.BNB} className="swap-icon-coin" />
-                          <span style={{ color: Colors.BROWN }}>BNB</span>
-                          <img
-                            src={Icons.ARROW_DOWN}
-                            className="swap-icon-coin"
-                          />
-                        </ISpace>
-                      </div>
-                    </ICol>
-                  </IRow>
-                  <IRow>
-                    <input
-                      className="swap-input"
-                      placeholder="0.0"
-                      // readOnly
-                      // value={value ? Number.parseFloat(value) * RATE : ""}
-                    />
-                  </IRow>
-                </ICol>
-              </div>
-              <br />
-
-              <div
-                className="button"
-                onClick={() => {
-                  setShowWallet(true);
-                }}
-              >
-                Connect wallet
-              </div>
-            </ICol>
-          </IRow>
+          <Liquidity setShowWallet={setShowWallet} />
         </ICol>
       </IRow>
+
       <Modal
         visible={showWallet}
         title={null}
