@@ -76,6 +76,7 @@ export function ListCoinComponent(props: any) {
   return (
     <Modal
       visible={props.visible ? true : false}
+      style={{ right: 0 }}
       title={null}
       footer={null}
       closable={false}

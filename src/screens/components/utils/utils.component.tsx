@@ -46,11 +46,12 @@ export function UtilsComponent() {
         <TabPane tab="+Liquidity" key="2">
           <Liquidity setShowWallet={setShowWallet} />
         </TabPane>
-        <TabPane disabled={true} tab="Stake" key="3">
-          {/* <Swap setShowWallet={setShowWallet} /> */}
-        </TabPane>
+
         <TabPane tab="-Liquidity" key="4">
           <Liquidity setShowWallet={setShowWallet} />
+        </TabPane>
+        <TabPane disabled={true} tab="Stake" key="3">
+          {/* <Swap setShowWallet={setShowWallet} /> */}
         </TabPane>
       </Tabs>
       <Modal
