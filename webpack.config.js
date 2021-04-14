@@ -147,7 +147,7 @@ module.exports = {
       template: __dirname + "/index.html",
       filename: "index.html",
       inject: "body",
-      // favicon: "./favicon.png",
+      favicon: "./favicon.png",
     }),
   ],
   devServer: {
